@@ -1,0 +1,330 @@
+.S-Unix2024.certificate-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.S-Unix2024.certificate-image {
+    width: 100%;
+}
+
+.S-Unix2024.input-fields {
+    margin-bottom: 20px;
+}
+
+.S-Unix2024.input-fields label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.S-Unix2024.signature-canvas {
+    margin-bottom: 120px;
+    border: 2px dashed #ccc;
+    width: 300px;
+    height: 100px;
+}
+
+.S-Unix2024.date-time {
+    font-size: 14px;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.S-Unix2024.overlay-text {
+    position: absolute;
+    white-space: nowrap; /* Prevents text wrapping */
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.S-Unix2024.recipient-name {
+    top: 25%;
+    font-size: 28px;
+    margin-top: 120px;
+}
+
+.S-Unix2024.medical-name {
+    top: 37%;
+    font-size: 20px;
+    margin-top: 260px;
+}
+
+.S-Unix2024.current-time {
+    top: 64%;
+    margin-top: 140px;
+    font-size: 14px;
+    margin-left: 177px;
+}
+
+.S-Unix2024.signature-display {
+    top: 60%;
+    left: 50%;
+    width: 300px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+}
+
+.S-Unix2024.buttons {
+    margin-bottom: 40px;
+}
+
+.S-Unix2024.buttons button {
+    margin-right: 10px;
+}
+
+.S-Unix2024.clear {
+    background-color: red;
+    color: white;
+}
+
+.S-Unix2024.clear:hover {
+    background-color: red; /* Tetap merah saat di-hover */
+}
+
+.S-Unix2024.download-button {
+    margin-bottom: 30px;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .S-Unix2024.recipient-name {
+        top: 20%;
+        font-size: 24px;
+        margin-top: 100px;
+    }
+    
+    .S-Unix2024.medical-name {
+        top: 35%;
+        font-size: 18px;
+        margin-top: 190px;
+    }
+    
+    .S-Unix2024.current-time {
+        top: 50%;
+        font-size: 12px;
+        margin-top: 100px;
+        margin-left: 140px;
+    }
+    
+    .S-Unix2024.signature-display {
+        top: 60%;
+        font-size: 12px;
+        margin-top: 76px;
+    }
+    
+    .S-Unix2024.certificate-container {
+        max-width: 100%;
+    }
+    
+    .S-Unix2024.signature-canvas {
+        width: 100%;
+        height: 70px;
+    }
+
+    .S-Unix2024.buttons {
+        margin-bottom: 20px;
+    }
+}
+
+
+.S-Unix2024.input-fields {
+    margin-bottom: 20px;
+    max-width: 600px; /* Menyempitkan form untuk tampilan lebih nyaman */
+    margin: 0 auto; /* Memusatkan form */
+    padding: 20px; /* Memberikan jarak di dalam form */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.S-Unix2024.input-fields label {
+    display: block;
+    margin-bottom: 5px; /* Memberikan jarak antara label dan input */
+    font-weight: bold; /* Membuat label lebih menonjol */
+    color: #333; /* Warna teks label */
+}
+
+.S-Unix2024.input-fields input[type="text"],
+.S-Unix2024.input-fields input[type="datetime-local"],
+.S-Unix2024.input-fields input[type="file"] {
+    width: 100%; /* Membuat lebar input penuh dalam form */
+    padding: 10px; /* Menambahkan jarak di dalam input */
+    margin-bottom: 15px; /* Memberikan jarak antar input */
+    border: 1px solid #ccc; /* Memberikan border ringan */
+    border-radius: 4px; /* Membuat sudut input sedikit melengkung */
+    box-sizing: border-box; /* Mencegah padding mengubah ukuran input */
+    font-size: 16px; /* Menambah ukuran font agar lebih mudah dibaca */
+}
+
+/* Area tanda tangan */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.input-fields {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.input-fields label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.input-fields input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.signature-container {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 400px;
+    border: 1px dashed #bbb;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+}
+
+.sigCanvas {
+    width: 100% !important;
+    height: auto;
+}
+
+
+/* Tombol "Clear" dan "Download" */
+.S-Unix2024.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Jarak antar tombol */
+    margin-bottom: 20px;
+}
+
+.S-Unix2024.buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.S-Unix2024.clear {
+    background-color: #ff6b6b; /* Warna merah lembut */
+    color: white;
+}
+
+.S-Unix2024.clear:hover {
+    background-color: #ff4c4c; /* Warna lebih gelap saat di-hover */
+}
+
+.S-Unix2024.download-button {
+    background-color: #4CAF50; /* Warna hijau untuk tombol "Download" */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.S-Unix2024.download-button:hover {
+    background-color: #45a049; /* Warna lebih gelap saat di-hover */
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .S-Unix2024.signature-canvas {
+        max-width: 100%;
+        height: 100px; /* Kurangi tinggi untuk layar kecil */
+    }
+
+    .S-Unix2024.buttons button {
+        padding: 8px 15px; /* Mengurangi ukuran padding tombol di layar kecil */
+        font-size: 14px; /* Sesuaikan ukuran font */
+    }
+}
+
+/* Wrapper untuk tombol Download */
+.S-Unix2024.download-button-container {
+    display: flex;
+    justify-content: center; /* Menempatkan tombol di tengah horizontal */
+    margin-top: 20px;
+}
+
+/* Tombol Download */
+.S-Unix2024.download-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.S-Unix2024.download-button:hover {
+    background-color: #45a049;
+}
+
+/* Specific positioning for each element */
+.S-Unix2024.patient-name {
+    left: 20px;
+    top: 50px;
+  }
+  
+  .S-Unix2024.age-gender {
+    left: 20px;
+    top: 80px;
+  }
+  
+  .S-Unix2024.address1 {
+    left: 20px;
+    top: 110px;
+  }
+  
+  .S-Unix2024.current-time {
+    left: 20px;
+    top: 140px;
+  }
+  
+  .S-Unix2024.signature-name {
+    left: 20px;
+    top: 170px;
+  }
+  
+  .S-Unix2024.address2 {
+    left: 20px;
+    top: 200px;
+  }
+  
+  .S-Unix2024.phone-number {
+    left: 20px;
+    top: 230px;
+  }
+  
+  .S-Unix2024.signature-display {
+    left: 20px;
+    top: 260px;
+  }
+  
+  .centered-heading {
+    text-align: center;
+}

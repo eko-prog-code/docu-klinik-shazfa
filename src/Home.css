@@ -1,0 +1,36 @@
+/* src/Home.css */
+.icon-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .icon-card {
+    display: flex;
+    flex-direction: row;
+    padding: 40px; /* Increased padding for a larger card */
+    background-color: #f4f4f4;
+    border-radius: 15px; /* Slightly more rounded */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow for more emphasis */
+  }
+  
+  .icon {
+    width: 150px; /* Increased icon size */
+    height: 180px;
+    margin: 0 20px; /* Increased space between icons */
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .icon:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+  }
+
+  .docu-klinik-container h2 {
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 120px;
+    margin-bottom: -160px;
+  }
+  
