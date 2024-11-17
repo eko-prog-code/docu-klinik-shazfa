@@ -1,0 +1,176 @@
+/* Container Umum */
+.newcppt-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.newcppt-image {
+    width: 100%;
+}
+
+.newcppt-form {
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.newcppt-form__label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.newcppt-form__input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Area Tanda Tangan */
+.signature-container {
+    margin: 20px auto;
+    max-width: 400px;
+    border: 1px dashed #bbb;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+}
+
+.signature-canvas {
+    width: 100%;
+    height: 100px;
+    border: 2px dashed #ccc;
+}
+
+/* Tombol */
+.newcppt-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.newcppt-buttons__button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newcppt-buttons__button--clear {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.newcppt-buttons__button--clear:hover {
+    background-color: #ff4c4c;
+}
+
+.newcppt-buttons__button--download {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.newcppt-buttons__button--download:hover {
+    background-color: #45a049;
+}
+
+/* Teks Overlay */
+.text-overlay {
+    position: absolute;
+    white-space: nowrap;
+    font-size: 18px;
+    z-index: 10; /* Pastikan teks di atas elemen lainnya */
+}
+
+.text-overlay--recipient-name {
+    top: 25%;
+    font-size: 18px;
+    margin-top: 120px;
+}
+
+.text-overlay--medical-name {
+    top: 37%;
+    font-size: 20px;
+    margin-top: 260px;
+}
+
+.text-overlay--current-time {
+    top: 64%;
+    margin-top: 140px;
+    font-size: 14px;
+    margin-left: 75px;
+}
+
+.text-overlay--signature-display {
+    top: 60%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%);
+}
+
+/* SOAP dan Instruksi */
+.text-overlay--soap,
+.text-overlay--instruksi {
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 250px;
+    display: block;
+    word-break: break-all;
+}
+
+/* Heading Terpusat */
+.centered-heading {
+    text-align: center;
+}
+
+/* Responsif untuk Mobile */
+@media (max-width: 768px) {
+    .text-overlay--recipient-name {
+        top: 20%;
+        font-size: 24px;
+        margin-top: 100px;
+    }
+
+    .text-overlay--medical-name {
+        top: 35%;
+        font-size: 18px;
+        margin-top: 190px;
+    }
+
+    .text-overlay--current-time {
+        top: 50%;
+        font-size: 12px;
+        margin-top: 100px;
+        margin-left: 140px;
+    }
+
+    .signature-canvas {
+        width: 100%;
+        height: 70px;
+    }
+
+    .newcppt-buttons__button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}

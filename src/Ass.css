@@ -1,0 +1,212 @@
+.ass-container {
+  display: flex;
+  flex-direction: column; /* Mengatur elemen di dalamnya menjadi kolom */
+  align-items: center;    /* Memusatkan elemen secara horizontal */
+  justify-content: center; /* Memusatkan elemen secara vertikal */
+  min-height: 100vh;      /* Membuat kontainer memenuhi tinggi layar */
+  padding: 20px;
+  background-color: #ffffff; /* Opsional, menambahkan latar belakang */
+}
+
+  
+.ass-form {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 255, 0.1); /* Biru sangat transparan, mendekati putih */
+  border-radius: 8px; /* Membuat sudut membulat */
+  padding: 20px; /* Memberikan jarak dalam elemen */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Opsional, menambahkan efek bayangan */
+}
+  
+  .cppt-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .overlay-text {
+    position: absolute;
+    font-size: 14px;
+    color: black;
+    font-family: Arial, sans-serif;
+    white-space: nowrap;
+  }
+  
+  .cppt-certificate-container {
+    position: relative;
+    width: 60%;
+    min-height: 500px;  /* Menambahkan tinggi minimal pada sertifikat */
+  }
+  
+  .signature-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: 150px;  /* Tinggi minimal pada kontainer tanda tangan */
+  }
+  
+  .overlay-text--recipient-name,
+  .overlay-text--surgery-history,
+  .overlay-text--family-history,
+  .overlay-text--history-illness,
+  .overlay-text--psychology-history,
+  .overlay-text--current-time,
+  .overlay-text--signature-display {
+    position: absolute;
+  }
+  
+  .ass-download-button {
+    margin-top: -220px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .cppt-form__label,
+  .cppt-form__input {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .cppt-form__input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .cppt-buttons button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+
+/* Area Tanda Tangan */
+.signature-container {
+    margin: 20px auto;
+    max-width: 400px;
+    border: 1px dashed #bbb;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+}
+
+.signature-canvas {
+    width: 100%;
+    height: 100px;
+    border: 2px dashed #ccc;
+}
+
+/* Tombol */
+.cppt-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.cppt-buttons__button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cppt-buttons__button--clear {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.cppt-buttons__button--clear:hover {
+    background-color: #ff4c4c;
+}
+
+.cppt-buttons__button--download {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cppt-buttons__button--download:hover {
+    background-color: #45a049;
+}
+
+/* Teks Overlay */
+.overlay-text--recipient-name {
+    top: 25%;
+    font-size: 14px;
+    margin-top: 120px;
+}
+
+.overlay-text--medical-name {
+    top: 37%;
+    font-size: 20px;
+    margin-top: 260px;
+}
+
+.overlay-text--current-time {
+    top: 64%;
+    margin-top: 140px;
+    font-size: 14px;
+    margin-left: 75px;
+}
+
+.overlay-text--signature-display {
+    top: 60%;
+    left: 50%;
+    width: 20px; /* Reduced width */
+    height: 20px; /* Reduced height */
+    transform: translate(-50%, -50%); /* Adjusts the position to keep it centered */
+}
+
+/* Responsif untuk Mobile */
+@media (max-width: 768px) {
+    .overlay-text--recipient-name {
+        top: 20%;
+        font-size: 14px;
+        margin-top: 100px;
+    }
+
+    .overlay-text--medical-name {
+        top: 35%;
+        font-size: 18px;
+        margin-top: 190px;
+    }
+
+    .overlay-text--current-time {
+        top: 50%;
+        font-size: 12px;
+        margin-top: 100px;
+        margin-left: 140px;
+    }
+
+    .signature-canvas {
+        width: 100%;
+        height: 70px;
+    }
+
+    .cppt-buttons__button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+.overlay-text--soap,
+.overlay-text--instruksi {
+  word-wrap: break-word;  /* Agar kata panjang dapat terpotong dan tidak melampaui batas */
+  white-space: normal;    /* Memastikan teks dapat terbungkus di beberapa baris */
+  overflow-wrap: break-word;  /* Memastikan teks di-wrap jika terlalu panjang */
+  font-size: 14px;        /* Ukuran font yang bisa disesuaikan */
+  line-height: 1.4;       /* Jarak antar baris */
+  max-width: 250px;       /* Lebar maksimal untuk membatasi panjang teks */
+  display: block;         /* Pastikan elemen berupa blok */
+  word-break: break-all;  /* Pecah kata jika terlalu panjang */
+}
+
+.centered-heading {
+    text-align: center;
+}
