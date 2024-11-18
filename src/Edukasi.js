@@ -111,28 +111,28 @@ const Edukasi = () => {
             {/* Certificate Display */}
             <div ref={certRef} className="S-Unix2024 certificate-container">
                 <img src={EduImage} alt="Certificate" className="S-Unix2024 certificate-image" />
-                <div className="S-Unix2024 overlay-text" style={{ left: '134px', top: '70px' }}>
+                <div className="S-Unix2024 overlay-text" style={{ left: '134px', top: '78px' }}>
                     {nomorRM}
                 </div>
-                <div className="S-Unix2024 overlay-text patient-name" style={{ left: '135px', top: '94px' }}>
+                <div className="S-Unix2024 overlay-text patient-name" style={{ left: '135px', top: '102px' }}>
                     {patientName}
                 </div>
-                <div className="S-Unix2024 overlay-text age-gender" style={{ left: '135px', top: '120px' }}>
+                <div className="S-Unix2024 overlay-text age-gender" style={{ left: '135px', top: '128px' }}>
                     {ageGender}
                 </div>
-                <div className="S-Unix2024 overlay-text address1" style={{ left: '140px', top: '145px' }}>
+                <div className="S-Unix2024 overlay-text address1" style={{ left: '140px', top: '153px' }}>
                     {address1}
                 </div>
                 <div className="S-Unix2024 overlay-text current-time" style={{ left: '-40px', top: '40px' }}>
                     {moment(selectedDate).format('DD/MM/YYYY HH:mm:ss')}
                 </div>
-                <div className="S-Unix2024 overlay-text signature-name" style={{ left: '190px', top: '320px' }}>
+                <div className="S-Unix2024 overlay-text signature-name" style={{ left: '190px', top: '328px' }}>
                     {signatureName}
                 </div>
-                <div className="S-Unix2024 overlay-text address2" style={{ left: '192px', top: '340px' }}>
+                <div className="S-Unix2024 overlay-text address2" style={{ left: '192px', top: '348px' }}>
                     {address2}
                 </div>
-                <div className="S-Unix2024 overlay-text phone-number" style={{ left: '192px', top: '364px' }}>
+                <div className="S-Unix2024 overlay-text phone-number" style={{ left: '192px', top: '372px' }}>
                     {phoneNumber}
                 </div>
                 {/* Display Patient Representative Signature */}

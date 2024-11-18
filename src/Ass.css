@@ -32,7 +32,7 @@
     white-space: nowrap;
   }
   
-  .cppt-certificate-container {
+  .ass-certificate-container {
     position: relative;
     width: 60%;
     min-height: 500px;  /* Menambahkan tinggi minimal pada sertifikat */
@@ -55,15 +55,19 @@
   }
   
   .ass-download-button {
-    margin-top: -220px;
+    position: fixed; /* Tetap terlihat saat scroll */
+    bottom: 20px; /* Berjarak 20px dari bawah layar */
+    left: 50%; /* Tempatkan di tengah horizontal */
+    transform: translateX(-50%); /* Koreksi agar benar-benar di tengah */
     padding: 10px 20px;
     font-size: 16px;
-    cursor: pointer;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
   }
+  
   
   .cppt-form__label,
   .cppt-form__input {

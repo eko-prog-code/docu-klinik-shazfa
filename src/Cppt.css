@@ -94,19 +94,19 @@
 .text-overlay {
     position: absolute;
     white-space: nowrap;
-    font-size: 18px;
+    font-size: 14px;
     z-index: 10; /* Pastikan teks di atas elemen lainnya */
 }
 
 .text-overlay--recipient-name {
     top: 25%;
-    font-size: 18px;
+    font-size: 14px;
     margin-top: 120px;
 }
 
 .text-overlay--medical-name {
     top: 37%;
-    font-size: 20px;
+    font-size: 14px;
     margin-top: 260px;
 }
 
@@ -147,13 +147,13 @@
 @media (max-width: 768px) {
     .text-overlay--recipient-name {
         top: 20%;
-        font-size: 24px;
+        font-size: 14px;
         margin-top: 100px;
     }
 
     .text-overlay--medical-name {
         top: 35%;
-        font-size: 18px;
+        font-size: 14px;
         margin-top: 190px;
     }
 

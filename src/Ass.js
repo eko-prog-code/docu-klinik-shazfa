@@ -8,7 +8,7 @@ import './Ass.css';
 
 const Ass = () => {
   const [medicalOfficerName, setMedicalOfficerName] = useState("");
-  const [namePosition, setNamePosition] = useState({ left: "100px", top: "2902px" });
+  const [namePosition, setNamePosition] = useState({ left: "100px", top: "2844px" });
 
   // Handler untuk mengubah nama petugas medis
   const handleNameChange = (event) => {
@@ -33,14 +33,14 @@ const Ass = () => {
 
   // State untuk posisi
   const [genderPositions, setGenderPositions] = useState({
-    lakiLaki: { left: '586px', top: '-2770px' },
-    perempuan: { left: '658px', top: '-2770px' },
+    lakiLaki: { left: '596px', top: '-2820px' },
+    perempuan: { left: '668px', top: '-2820px' },
   });
 
   const [currentDateTime, setCurrentDateTime] = useState(moment().tz("Asia/Jakarta"));
   const [datetimePositions, setDatetimePositions] = useState({
-    date: { left: "127px", top: "2750px" },
-    time: { left: "254px", top: "2750px" },
+    date: { left: "127px", top: "2702px" },
+    time: { left: "254px", top: "2702px" },
   });
 
   // Perbarui waktu setiap detik
@@ -144,6 +144,29 @@ const Ass = () => {
     }));
   };
 
+  const [uploadedSignature, setUploadedSignature] = useState(null);
+  const [signaturePosition, setSignaturePosition] = useState({ top: -420, left: 100 });
+
+  const handleSignatureUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setUploadedSignature(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const updateSignaturePosition = (axis, value) => {
+    setSignaturePosition((prevPosition) => ({
+      ...prevPosition,
+      [axis]: value,
+    }));
+  };
+
+
+
   const [signatureName, setSignatureName] = useState('');
   const [medicalSignature, setMedicalSignature] = useState(null);
 
@@ -163,8 +186,8 @@ const Ass = () => {
 
   // Posisi hasil untuk setiap pilihan
   const [hospitalizationPositions, setHospitalizationPositions] = useState({
-    tidak: { left: "272px", top: "-2456px" },
-    ya: { left: "320px", top: "-2456px" },
+    tidak: { left: "260px", top: "-2406px" },
+    ya: { left: "308px", top: "-2406px" },
   });
 
   // Handler untuk mengubah status radio button
@@ -200,11 +223,11 @@ const Ass = () => {
   // State untuk menyimpan detail jika "Ya" dipilih
   const [recoveryDetails, setRecoveryDetails] = useState("");
 
-  // Posisi untuk setiap hasil
+  // proses penyembuhan Posisi untuk setiap hasil
   const recoveryPositions = {
-    tidak: { left: "272px", top: "-2418px" },
-    ya: { left: "410px", top: "-2414x" },
-    details: { left: "370px", top: "-2414px" },
+    tidak: { left: "272px", top: "-2370px" },
+    ya: { left: "380px", top: "-2370x" },
+    details: { left: "352px", top: "-2368px" },
   };
 
   // Handler untuk mengubah status radio button
@@ -261,14 +284,14 @@ const Ass = () => {
 
   // Riwayat Penyakit keluarga Menyimpan posisi (left, top) untuk setiap hasil yang dipilih
   const [familyDiseasePositions, setFamilyDiseasePositions] = useState({
-    tidak: { left: '118px', top: '610px' },
-    ya: { left: '212px', top: '610px' },
-    hipertensi: { left: '250px', top: '610px' },
-    jantung: { left: '340px', top: '610px' },
-    paru: { left: '418px', top: '610px' },
-    dm: { left: '478px', top: '610px' },
-    ginjal: { left: '538px', top: '610px' },
-    lainnya: { left: '610px', top: '610px' },
+    tidak: { left: '114px', top: '602px' },
+    ya: { left: '210px', top: '602px' },
+    hipertensi: { left: '250px', top: '602px' },
+    jantung: { left: '334px', top: '602px' },
+    paru: { left: '418px', top: '602px' },
+    dm: { left: '472px', top: '602px' },
+    ginjal: { left: '534px', top: '602px' },
+    lainnya: { left: '602px', top: '602px' },
   });
 
   // Handler untuk mengubah nilai checkbox
@@ -295,13 +318,13 @@ const Ass = () => {
 
   // Menyimpan posisi (left, top) untuk setiap pilihan
   const [dependencyPositions, setDependencyPositions] = useState({
-    tidak: { left: "114px", top: "-2360px" },
-    ya: { left: "210px", top: "-2360px" },
-    "obat-obatan": { left: "298px", top: "-2360px" },
-    rokok: { left: "420px", top: "-2360px" },
-    alkohol: { left: "494px", top: "-2360px" },
-    lainnya: { left: "516px", top: "-2360px" },
-    dependencyDetails: { left: "578px", top: "-2360px" },
+    tidak: { left: "114px", top: "-2312px" },
+    ya: { left: "210px", top: "-2312px" },
+    "obat-obatan": { left: "294px", top: "-2312px" },
+    rokok: { left: "409px", top: "-2312px" },
+    alkohol: { left: "482px", top: "-2312px" },
+    lainnya: { left: "504px", top: "-2312px" },
+    dependencyDetails: { left: "564px", top: "-2312px" },
   });
 
   // Handler untuk mengubah status checkbox
@@ -326,9 +349,9 @@ const Ass = () => {
 
   //pekerjaan Menyimpan posisi (left, top) untuk setiap pilihan dan teks rincian pekerjaan
   const [employmentPositions, setEmploymentPositions] = useState({
-    tidak: { left: "130px", top: "-2326px" },
-    ya: { left: "200px", top: "-2326px" },
-    employmentDetails: { left: "220px", top: "-2326px" }, // Posisi untuk teks detail
+    tidak: { left: "130px", top: "-2280px" },
+    ya: { left: "200px", top: "-2280px" },
+    employmentDetails: { left: "220px", top: "-2280px" }, // Posisi untuk teks detail
   });
 
   // Handler untuk mengubah status radio button
@@ -358,13 +381,13 @@ const Ass = () => {
     lainnya: "",
   });
 
-  // Menyimpan posisi (left, top) untuk setiap hasil
+  // Riwayat alergi Menyimpan posisi (left, top) untuk setiap hasil
   const [allergyPositions, setAllergyPositions] = useState({
-    tidak: { left: "196px", top: "-2310px" },
-    ya: { left: "240px", top: "-2310px" },
-    obat: { left: "292px", top: "-2310px" }, // Posisi untuk detail obat
-    makanan: { left: "480px", top: "-2310px" }, // Posisi untuk detail makanan
-    lainnya: { left: "625px", top: "-2310px" }, // Posisi untuk detail lainnya
+    tidak: { left: "196px", top: "-2264px" },
+    ya: { left: "240px", top: "-2264px" },
+    obat: { left: "292px", top: "-2264px" }, // Posisi untuk detail obat
+    makanan: { left: "478px", top: "-2264px" }, // Posisi untuk detail makanan
+    lainnya: { left: "608px", top: "-2264px" }, // Posisi untuk detail lainnya
   });
 
   // Handler untuk mengubah status radio button
@@ -403,9 +426,9 @@ const Ass = () => {
   // State untuk menyimpan detail jika "Ya" dipilih
   const [medicationDetails, setMedicationDetails] = useState("");
 
-  // Posisi untuk setiap hasil
+  // Pemakaian Obat Posisi untuk setiap hasil
   const medicationPositions = {
-    tidak: { left: "118px", top: "-2282px" },
+    tidak: { left: "118px", top: "-2238px" },
     ya: { left: "195px", top: "-2282px" },
     details: { left: "300px", top: "-2282px" },
   };
@@ -431,9 +454,9 @@ const Ass = () => {
 
   // State untuk posisi
   const [historyPositions, setHistoryPositions] = useState({
-    cemas: { left: '114px', top: '-2218px' },
-    takut: { left: '204px', top: '-2218px' },
-    sedih: { left: '284px', top: '-2218px' },
+    cemas: { left: '114px', top: '-2180px' },
+    takut: { left: '204px', top: '-2180px' },
+    sedih: { left: '284px', top: '-2180px' },
   });
 
   // Fungsi untuk menangani perubahan radio button
@@ -447,8 +470,8 @@ const Ass = () => {
 
   // State untuk posisi
   const [statusPositions, setStatusPositions] = useState({
-    tidakBaik: { left: '350px', top: '-2176px' },
-    baikKerabat: { left: '430px', top: '-2176px' },
+    tidakBaik: { left: '350px', top: '-2140px' },
+    baikKerabat: { left: '428px', top: '-2140px' },
   });
 
   // Fungsi untuk menangani perubahan pilihan radio button
@@ -465,9 +488,9 @@ const Ass = () => {
 
   // State untuk menyimpan posisi (left, top) dari hasil
   const [contactPositions, setContactPositions] = useState({
-    name: { left: "164px", top: "-2128px" },
-    relation: { left: "338px", top: "-2128px" },
-    phone: { left: "510px", top: "-2128px" },
+    name: { left: "164px", top: "-2090px" },
+    relation: { left: "338px", top: "-2090px" },
+    phone: { left: "500px", top: "-2090px" },
   });
 
   // Handler untuk mengubah input
@@ -494,8 +517,8 @@ const Ass = () => {
 
   // State untuk posisi hasil
   const [activityPosition, setActivityPosition] = useState({
-    left: "358px",
-    top: "-2100px",
+    left: "350px",
+    top: "-2060px",
   });
 
   // Handler untuk mengubah input aktivitas keagamaan
@@ -528,16 +551,16 @@ const Ass = () => {
 
   // State untuk posisi hasil
   const [needsPositions, setNeedsPositions] = useState({
-    tidak: { left: "90px", top: "-2030px" },
-    ya: { left: "168px", top: "-2030px" },
-    pendengaran: { left: "272px", top: "-2030px" },
-    penglihatan: { left: "390px", top: "-2030px" },
-    kognitif: { left: "508px", top: "-2030px" },
-    fisik: { left: "606px", top: "-2030px" },
-    budaya: { left: "272px", top: "-2010px" },
-    emosi: { left: "390px", top: "-2010px" },
-    bahasa: { left: "508px", top: "-2010px" },
-    lainnya: { left: "606px", top: "-2010px" },
+    tidak: { left: "90px", top: "-1990px" },
+    ya: { left: "160px", top: "-1990px" },
+    pendengaran: { left: "264px", top: "-1990px" },
+    penglihatan: { left: "382px", top: "-1990px" },
+    kognitif: { left: "500px", top: "-1990px" },
+    fisik: { left: "598px", top: "-1990px" },
+    budaya: { left: "268px", top: "-1970px" },
+    emosi: { left: "386px", top: "-1970px" },
+    bahasa: { left: "500px", top: "-1970px" },
+    lainnya: { left: "598px", top: "-1970px" },
   });
 
   // Handler untuk mengubah status checkbox
@@ -568,8 +591,8 @@ const Ass = () => {
 
   // State untuk mengatur posisi hasil
   const [translatorPositions, setTranslatorPositions] = useState({
-    tidak: { left: "272px", top: "-1996px" },
-    iya: { left: "362px", top: "-1996px" },
+    tidak: { left: "264px", top: "-1956px" },
+    iya: { left: "354px", top: "-1956px" },
   });
 
   // Handler untuk mengubah status radio button
@@ -605,8 +628,8 @@ const Ass = () => {
 
   // State untuk mengatur posisi hasil
   const [signLanguagePositions, setSignLanguagePositions] = useState({
-    tidak: { left: "620px", top: "-1996px" },
-    iya: { left: "722px", top: "-1996px" },
+    tidak: { left: "608px", top: "-1958px" },
+    iya: { left: "714px", top: "-1956px" },
   });
 
   // Handler untuk mengubah pilihan radio button
@@ -634,9 +657,9 @@ const Ass = () => {
 
   // State untuk mengatur posisi hasil
   const [actionPositions, setActionPositions] = useState({
-    rehabilitasi: { left: "358px", top: "-1960px" },
-    managementNyeri: { left: "540px", top: "-1960px" },
-    lainLain: { left: "96px", top: "-1946px" },
+    rehabilitasi: { left: "350px", top: "-1924px" },
+    managementNyeri: { left: "532px", top: "-1924px" },
+    lainLain: { left: "88px", top: "-1908px" },
   });
 
   // Handler untuk mengubah pilihan tindakan keperawatan
@@ -674,18 +697,18 @@ const Ass = () => {
 
   // State untuk mengatur posisi hasil
   const [mstPositions, setMstPositions] = useState({
-    tidak: { left: "310px", top: "-1096px" },
-    ya: { left: "372px", top: "-1096px" },
-    dm: { left: "460px", top: "-1096px" },
-    ginjal: { left: "518px", top: "-1096px" },
-    hi: { left: "566px", top: "-1096px" },
-    jantung: { left: "116px", top: "-1078px" },
-    paru: { left: "168px", top: "-1056px" },
-    stroke: { left: "224px", top: "-1056px" },
-    kanker: { left: "286px", top: "-1056px" },
-    imunitas: { left: "430px", top: "-1056px" },
-    geriatri: { left: "490px", top: "-1056px" },
-    lainnya: { left: "142px", top: "-1036px" },
+    tidak: { left: "306px", top: "-1074px" },
+    ya: { left: "368px", top: "-1074px" },
+    dm: { left: "456px", top: "-1074px" },
+    ginjal: { left: "514px", top: "-1074px" },
+    hi: { left: "562px", top: "-1074px" },
+    jantung: { left: "116px", top: "-1058px" },
+    paru: { left: "168px", top: "-1036px" },
+    stroke: { left: "220px", top: "-1036px" },
+    kanker: { left: "286px", top: "-1036px" },
+    imunitas: { left: "426px", top: "-1036px" },
+    geriatri: { left: "490px", top: "-1036px" },
+    lainnya: { left: "138px", top: "-1020px" },
   });
 
   // Handler untuk mengubah pilihan
@@ -727,18 +750,18 @@ const Ass = () => {
 
   // State untuk mengatur posisi hasil
   const [strongKidsPositions, setStrongKidsPositions] = useState({
-    tidak: { left: "310px", top: "-598px" },
-    ya: { left: "372px", top: "-598px" },
-    dm: { left: "460px", top: "-598px" },
-    ginjal: { left: "518px", top: "-598px" },
-    hi: { left: "566px", top: "-598px" },
-    jantung: { left: "118px", top: "-582px" },
-    paru: { left: "168px", top: "-564px" },
-    stroke: { left: "224px", top: "-564px" },
-    kanker: { left: "286px", top: "-564px" },
-    imunitas: { left: "430px", top: "-564px" },
-    geriatri: { left: "490px", top: "-564px" },
-    lainnya: { left: "142px", top: "-548px" },
+    tidak: { left: "306px", top: "-596px" },
+    ya: { left: "368px", top: "-596px" },
+    dm: { left: "456px", top: "-596px" },
+    ginjal: { left: "514px", top: "-596px" },
+    hi: { left: "562px", top: "-596px" },
+    jantung: { left: "116px", top: "-582px" },
+    paru: { left: "165px", top: "-562px" },
+    stroke: { left: "218px", top: "-562px" },
+    kanker: { left: "286px", top: "-562px" },
+    imunitas: { left: "426px", top: "-562px" },
+    geriatri: { left: "490px", top: "-562px" },
+    lainnya: { left: "134px", top: "-546px" },
   });
 
   // Handler untuk mengubah pilihan
@@ -792,10 +815,10 @@ const Ass = () => {
 
   // State untuk posisi tiap relief
   const [positions, setPositions] = useState({
-    minumObat: { left: '92px', top: '-1542px' },
-    istirahat: { left: '238px', top: '-1542px' },
-    mendengarMusik: { left: '356px', top: '-1542px' },
-    berubahPosisi: { left: '542px', top: '-1542px' },
+    minumObat: { left: '92px', top: '-1520px' },
+    istirahat: { left: '234px', top: '-1520px' },
+    mendengarMusik: { left: '348px', top: '-1520px' },
+    berubahPosisi: { left: '534px', top: '-1520px' },
   });
 
   // Fungsi untuk menangani perubahan checkbox
@@ -807,7 +830,7 @@ const Ass = () => {
   };
 
 
-  const certRef = useRef();
+  const certRef = useRef(null);
   const medicalSigCanvasRef = useRef();
 
   useEffect(() => {
@@ -825,18 +848,24 @@ const Ass = () => {
   };
 
   const handleDownload = () => {
-    setTimeout(() => {
-      html2canvas(certRef.current, { backgroundColor: '#fff' })
-        .then((canvas) => {
-          canvas.toBlob((blob) => {
+    console.log("Download button clicked"); // Tambahkan log ini
+    html2canvas(certRef.current, { backgroundColor: '#fff' })
+      .then((canvas) => {
+        console.log("Canvas created"); // Tambahkan log setelah canvas berhasil dibuat
+        canvas.toBlob((blob) => {
+          if (blob) {
+            console.log("Blob created, initiating download"); // Tambahkan log ini
             saveAs(blob, `${patientName}-${moment(selectedDate).format('YYYYMMDD-HHmmss')}.png`);
-          });
-        })
-        .catch((err) => {
-          console.error('Failed to capture image', err);
+          } else {
+            console.error("Failed to generate blob from canvas");
+          }
         });
-    }, 1000);
+      })
+      .catch((err) => {
+        console.error("Failed to capture image", err);
+      });
   };
+
 
 
   let riskLevel;
@@ -900,7 +929,7 @@ const Ass = () => {
           <input type="text" className="cppt-form__input" value={address1} onChange={e => setAddress1(e.target.value)} />
         </label>
         <h4>Jenis Kelamin</h4>
-        <div>
+        <div style={{ marginBottom: '20px' }}>
           {/* Radio button untuk Laki Laki */}
           <label>
             <input
@@ -931,22 +960,13 @@ const Ass = () => {
 
         {/* Input Keluhan Utama */}
         <div style={{ marginBottom: "10px" }}>
-          <label>
-            Keluhan Utama:
+          <label className="cppt-form__label">
             <input
+              className="cppt-form__input"
               type="text"
               value={mainComplaint}
               onChange={handleComplaintChange}
               placeholder="Masukkan keluhan utama"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </label>
         </div>
@@ -955,22 +975,13 @@ const Ass = () => {
 
         {/* Input Ruangan */}
         <div style={{ marginBottom: "10px" }}>
-          <label>
-            Ruangan:
+          <label className="cppt-form__label">
             <input
+              className="cppt-form__input"
               type="text"
               value={room}
               onChange={handleRoomChange}
               placeholder="Masukkan ruangan"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </label>
         </div>
@@ -1011,150 +1022,96 @@ const Ass = () => {
           </label>
         </div>
 
+        {/* Input untuk "Lainnya" */}
+        {dataSource === "lainnya" && (
+          <div style={{ marginBottom: "10px" }}>
+            <input
+              className="cppt-form__input"
+              type="text"
+              value={otherSource}
+              onChange={handleOtherSourceChange}
+              placeholder="Siapa sumber datanya?"
+            />
+          </div>
+        )}
+
         <h4>Form Pemeriksaan Fisik</h4>
 
         {/* Form Input untuk Pemeriksaan Fisik */}
         <div style={{ marginBottom: "20px" }}>
-          <label>
+          <label className="cppt-form__label">
             BB (Berat Badan):
             <input
               type="text"
               value={physicalExam.bb}
               onChange={(e) => handleInputChange("bb", e.target.value)}
               placeholder="Masukkan BB"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
+              className="cppt-form__input"
             />
           </label>
 
-          <label style={{ marginTop: "10px", display: "block" }}>
+          <label className="cppt-form__label">
             TB (Tinggi Badan):
             <input
+              className="cppt-form__input"
               type="text"
               value={physicalExam.tb}
               onChange={(e) => handleInputChange("tb", e.target.value)}
               placeholder="Masukkan TB"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </label>
 
-          <label style={{ marginTop: "10px", display: "block" }}>
+          <label className="cppt-form__label">
             TD (Tekanan Darah):
             <input
+              className="cppt-form__input"
               type="text"
               value={physicalExam.td}
               onChange={(e) => handleInputChange("td", e.target.value)}
               placeholder="Masukkan TD"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </label>
 
-          <label style={{ marginTop: "10px", display: "block" }}>
+          <label className="cppt-form__label">
             SB (Suhu Badan):
             <input
+              className="cppt-form__input"
               type="text"
               value={physicalExam.sb}
               onChange={(e) => handleInputChange("sb", e.target.value)}
               placeholder="Masukkan SB"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </label>
 
-          <label style={{ marginTop: "10px", display: "block" }}>
+          <label className="cppt-form__label">
             RR (Respirasi Rate):
             <input
+              className="cppt-form__input"
               type="text"
               value={physicalExam.rr}
               onChange={(e) => handleInputChange("rr", e.target.value)}
               placeholder="Masukkan RR"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </label>
 
-          <label style={{ marginTop: "10px", display: "block" }}>
+          <label className="cppt-form__label">
             Nadi:
             <input
+              className="cppt-form__input"
               type="text"
               value={physicalExam.nadi}
               onChange={(e) => handleInputChange("nadi", e.target.value)}
               placeholder="Masukkan Nadi"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </label>
         </div>
 
 
-        {/* Input untuk "Lainnya" */}
-        {dataSource === "lainnya" && (
-          <div style={{ marginBottom: "10px" }}>
-            <input
-              type="text"
-              value={otherSource}
-              onChange={handleOtherSourceChange}
-              placeholder="Siapa sumber datanya?"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
-            />
-          </div>
-        )}
+
 
 
         {/* Medical History Section */}
-        <h4>3a. Riwayat Penyakit Lalu</h4>
+        <h4>Form Riwayat Penyakit Lalu</h4>
         <label>
           <input
             type="radio"
@@ -1269,7 +1226,7 @@ const Ass = () => {
         )}
 
 
-        <h4>3b. Pernah di Operasi</h4>
+        <h4>Pernah di Operasi</h4>
         <label>
           <input
             type="radio"
@@ -1348,22 +1305,16 @@ const Ass = () => {
         {recoveryStatus === "ya" && (
           <div style={{ marginTop: "10px" }}>
             <input
+              className="cppt-form__input"
               type="text"
               value={recoveryDetails}
               onChange={updateRecoveryDetails}
               placeholder="Sebutkan?"
-              style={{
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </div>
         )}
 
-        <h4>3c. Riwayat Keluarga</h4>
+        <h4>Riwayat Keluarga</h4>
         <div>
           {/* Checkbox untuk Tidak */}
           <label>
@@ -1529,16 +1480,11 @@ const Ass = () => {
             <label>
               Ketergantungan terhadap apa?
               <input
+                className="cppt-form__input"
                 type="text"
                 value={dependencyDetails}
                 onChange={handleDetailsChange}
                 placeholder="Masukkan rincian"
-                style={{
-                  display: "block",
-                  marginTop: "10px",
-                  padding: "5px",
-                  fontSize: "14px",
-                }}
               />
             </label>
           </div>
@@ -1577,17 +1523,11 @@ const Ass = () => {
             <label>
               Sebutkan?
               <input
+                className="cppt-form__input"
                 type="text"
                 value={employmentDetails}
                 onChange={handleEmploymentDetailsChange}
                 placeholder="Sebutkan pekerjaan Anda"
-                style={{
-                  padding: "5px",
-                  fontSize: "14px",
-                  width: "300px",
-                  borderRadius: "4px",
-                  border: "1px solid #ccc",
-                }}
               />
             </label>
           </div>
@@ -1626,55 +1566,31 @@ const Ass = () => {
             <label>
               Obat
               <input
+                className="cppt-form__input"
                 type="text"
                 value={allergyDetails.obat}
                 onChange={(event) => handleAllergyDetailsChange("obat", event)}
                 placeholder="Masukkan detail obat"
-                style={{
-                  display: "block",
-                  marginTop: "5px",
-                  padding: "5px",
-                  fontSize: "14px",
-                  width: "300px",
-                  borderRadius: "4px",
-                  border: "1px solid #ccc",
-                }}
               />
             </label>
             <label>
               Makanan
               <input
+                className="cppt-form__input"
                 type="text"
                 value={allergyDetails.makanan}
                 onChange={(event) => handleAllergyDetailsChange("makanan", event)}
                 placeholder="Masukkan detail makanan"
-                style={{
-                  display: "block",
-                  marginTop: "10px",
-                  padding: "5px",
-                  fontSize: "14px",
-                  width: "300px",
-                  borderRadius: "4px",
-                  border: "1px solid #ccc",
-                }}
               />
             </label>
             <label>
               Lainnya
               <input
+                className="cppt-form__input"
                 type="text"
                 value={allergyDetails.lainnya}
                 onChange={(event) => handleAllergyDetailsChange("lainnya", event)}
                 placeholder="Masukkan rincian lainnya"
-                style={{
-                  display: "block",
-                  marginTop: "10px",
-                  padding: "5px",
-                  fontSize: "14px",
-                  width: "300px",
-                  borderRadius: "4px",
-                  border: "1px solid #ccc",
-                }}
               />
             </label>
           </div>
@@ -1711,23 +1627,15 @@ const Ass = () => {
         {medicationHistory === "ya" && (
           <div style={{ marginTop: "10px" }}>
             <input
+              className="cppt-form__input"
               type="text"
               value={medicationDetails}
               onChange={updateMedicationDetails}
               placeholder="Sebutkan?"
-              style={{
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </div>
         )}
 
-
-        <h4>3d. Riwayat Psikologi</h4>
         <h4>Riwayat Psikologi</h4>
         <div>
           {/* Radio button untuk Cemas */}
@@ -1791,22 +1699,14 @@ const Ass = () => {
 
         {/* Input Nama */}
         <div style={{ marginBottom: "10px" }}>
-          <label>
+          <label className="cppt-form__label">
             Nama:
             <input
               type="text"
               value={contactDetails.name}
               onChange={(e) => updateContactInput("name", e.target.value)}
               placeholder="Masukkan nama"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
+              className="cppt-form__input"
             />
           </label>
         </div>
@@ -1820,15 +1720,7 @@ const Ass = () => {
               value={contactDetails.relation}
               onChange={(e) => updateContactInput("relation", e.target.value)}
               placeholder="Masukkan hubungan"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
+              className="cppt-form__input"
             />
           </label>
         </div>
@@ -1842,15 +1734,7 @@ const Ass = () => {
               value={contactDetails.phone}
               onChange={(e) => updateContactInput("phone", e.target.value)}
               placeholder="Masukkan no telepon"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
+              className="cppt-form__input"
             />
           </label>
         </div>
@@ -1866,20 +1750,12 @@ const Ass = () => {
               value={religiousActivity}
               onChange={(e) => handleActivityChange(e.target.value)}
               placeholder="Masukkan aktivitas keagamaan"
-              style={{
-                display: "block",
-                marginTop: "5px",
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
+              className="cppt-form__input"
             />
           </label>
         </div>
 
-        <h3>Kebutuhan Komunikasi dan Edukasi</h3>
+        <h4>Kebutuhan Komunikasi dan Edukasi</h4>
         <div>
           {/* Pilihan Checkbox */}
           {Object.keys(selectedNeeds).map((option) => (
@@ -2011,25 +1887,19 @@ const Ass = () => {
 
         {/* Tampilkan input jika "Lain-lain" dipilih */}
         {nursingAction === "lainLain" && (
-          <div style={{ marginTop: "10px" }}>
+          <div className="cppt-form__label">
             <input
+              className="cppt-form__input"
               type="text"
               value={nursingActionDetails}
               onChange={updateActionDetails}
               placeholder="Sebutkan?"
-              style={{
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </div>
         )}
 
 
-        <h2>Skrining Risiko Jatuh</h2>
+        <h4>Skrining Risiko Jatuh</h4>
 
         {/* Pertanyaan 1 */}
         <div className="form-question">
@@ -2077,7 +1947,7 @@ const Ass = () => {
           </label>
         </div>
 
-        <h2>Form - Nutrisi</h2>
+        <h4>Form - Nutrisi</h4>
         <div className="form-question">
           <p>1. Penurunan berat badan terakhir?</p>
           <label>
@@ -2141,7 +2011,7 @@ const Ass = () => {
           </label>
         </div>
 
-        <h4>Berdasarkan MST</h4>
+        <h4>Skrining Gizi Berdasarkan MST</h4>
         <div>
           {/* Radio Button */}
           {["tidak", "ya", "dm", "ginjal", "hi", "jantung", "paru", "stroke", "kanker", "imunitas", "geriatri", "lainnya"].map((key) => (
@@ -2161,23 +2031,17 @@ const Ass = () => {
         {mstSelection.includes("lainnya") && (
           <div style={{ marginTop: "10px" }}>
             <input
+              className="cppt-form__input"
               type="text"
               value={otherDetails}
               onChange={updateOtherDetails}
               placeholder="Sebutkan?"
-              style={{
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </div>
         )}
 
 
-        <h2>Form - Skrining Gizi Anak</h2>
+        <h4>Form - Skrining Gizi Anak</h4>
 
         {/* Form 1: Apakah ada penyakit yang mengakibatkan pasien berisiko malnutrisi? */}
         <div className="form-question">
@@ -2291,17 +2155,11 @@ const Ass = () => {
         {strongKidsSelection.includes("lainnya") && (
           <div style={{ marginTop: "10px" }}>
             <input
+              className="cppt-form__input"
               type="text"
               value={otherStrongKidsDetails}
               onChange={handleStrongKidsOtherDetailsChange}
               placeholder="Sebutkan?"
-              style={{
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </div>
         )}
@@ -2361,6 +2219,7 @@ const Ass = () => {
                 <div className="form-question">
                   <p>Lokasi Nyeri</p>
                   <input
+                    className="cppt-form__input"
                     type="text"
                     value={painLocation}
                     onChange={(e) => setPainLocation(e.target.value)}
@@ -2371,6 +2230,7 @@ const Ass = () => {
                 <div className="form-question">
                   <p>Frekunsi Nyeri</p>
                   <input
+                    className="cppt-form__input"
                     type="text"
                     value={painFrequency}
                     onChange={(e) => setPainFrequency(e.target.value)}
@@ -2381,6 +2241,7 @@ const Ass = () => {
                 <div className="form-question">
                   <p>Durasi Nyeri</p>
                   <input
+                    className="cppt-form__input"
                     type="text"
                     value={painDuration}
                     onChange={(e) => setPainDuration(e.target.value)}
@@ -2434,8 +2295,6 @@ const Ass = () => {
       </form>
 
 
-
-
       {/* Signature Section */}
       <div className="signature-container">
         <div>
@@ -2457,20 +2316,36 @@ const Ass = () => {
             />
           </label>
         </div>
-        <h4>Signature for Medical Personnel</h4>
-        <SignatureCanvas ref={medicalSigCanvasRef} penColor="black" canvasProps={{ className: 'signature-canvas' }} />
-        <div className="cppt-buttons">
-          <button onClick={() => handleClearSignature(medicalSigCanvasRef, setMedicalSignature)}>Clear</button>
-          <button onClick={() => handleSendSignature(medicalSigCanvasRef, setMedicalSignature)}>Send e-Sign</button>
-        </div>
+        {/* Area Upload Gambar */}
+        <h4>Upload Signature</h4>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleSignatureUpload}
+          style={{ marginBottom: "10px" }}
+        />
+
       </div>
 
-      <div ref={certRef} className="cppt-certificate-container">
+
+      <div
+        ref={certRef}
+        className="ass-certificate-container"
+        style={{
+          position: 'relative',
+          width: '800px', // Tetapkan lebar
+          height: '3000px', // Tetapkan tinggi
+          backgroundColor: '#fff', // Pastikan latar belakang tidak transparan
+        }}
+      >
+
         <img src={AssImg} alt="Certificate" className="cppt-image" />
         <div className="overlay-text overlay-text--recipient-name" style={{ left: '520px', top: '21px' }}>{nomorRM}</div>
         <div className="overlay-text overlay-text--recipient-name" style={{ left: '520px', top: '44px' }}>{patientName}</div>
         <div className="overlay-text overlay-text--recipient-name" style={{ left: '520px', top: '68px' }}>{ageGender}</div>
         <div className="overlay-text overlay-text--recipient-name" style={{ left: '520px', top: '90px' }}>{address1}</div>
+
+
         <div style={{ marginTop: '20px', position: 'relative' }}>
           <div style={{ position: 'relative' }}>
             {selectedGender === 'lakiLaki' && (
@@ -2551,11 +2426,10 @@ const Ass = () => {
                 position: "absolute",
                 left: dataSourcePositions.lainnya.left,
                 top: dataSourcePositions.lainnya.top,
-                fontWeight: "bold",
-                fontSize: "16px",
+                fontSize: "14px",
               }}
             >
-              <strong>✔️ lainnya: </strong> {otherSource}
+              ✔️ lainnya: {otherSource}
             </div>
           )}
         </div>
@@ -2620,7 +2494,7 @@ const Ass = () => {
                   position: "absolute",
                   left: hospitalizationPositions.ya.left,
                   top: hospitalizationPositions.ya.top,
-                  fontSize: "16px",
+                  fontSize: "14px",
                   display: "flex", // Flexbox untuk tampilan horizontal
                   gap: "10px", // Jarak antar elemen
                 }}
@@ -2644,8 +2518,9 @@ const Ass = () => {
         <div
           className="overlay-text overlay-text--surgery-history"
           style={{
-            left: surgeryHistory ? '340px' : '270px',
-            top: surgeryHistory ? '550px' : '550px',
+            left: surgeryHistory ? '308px' : '260px', //ya:tidak
+            top: surgeryHistory ? '548px' : '548px',
+            fontSize: '14px', //operasi
           }}
         >
           {surgeryHistory
@@ -2676,7 +2551,7 @@ const Ass = () => {
                   fontSize: "14px",
                 }}
               >
-                <strong>✔️penyembuhan</strong>
+                <strong></strong>
               </div>
               {recoveryDetails && (
                 <div
@@ -2720,8 +2595,9 @@ const Ass = () => {
           className="overlay-text overlay-text--history-illness"
           style={{
             // Mengatur posisi berdasarkan kondisi historyIllness
-            left: historyIllness ? '340px' : '260px',  // Riwayat penyakit lalu
+            left: historyIllness ? '337px' : '260px',  // Riwayat penyakit lalu
             top: historyIllness ? '510px' : '510px', // Sama untuk keduanya, bisa Anda sesuaikan
+            fontSize: '14px',
           }}
         >
           {historyIllness
@@ -2769,8 +2645,7 @@ const Ass = () => {
                 position: "absolute",
                 left: employmentPositions.tidak.left,
                 top: employmentPositions.tidak.top,
-                fontWeight: "bold",
-                fontSize: "16px",
+                fontSize: "14px",
               }}
             >
               <strong>✔️</strong>
@@ -2782,11 +2657,10 @@ const Ass = () => {
                 position: "absolute",
                 left: employmentPositions.employmentDetails.left,
                 top: employmentPositions.employmentDetails.top,
-                fontWeight: "bold",
-                fontSize: "16px",
+                fontSize: "14px",
               }}
             >
-              <strong>✔️</strong> {employmentDetails}
+              ✔️Ya, {employmentDetails}
             </div>
           )}
         </div>
@@ -3139,23 +3013,24 @@ const Ass = () => {
 
 
         <div className="form-result" style={{ position: 'relative', width: '400px', height: '200px' }}>
-          {/* Hasil Skrining Risiko Jatuh Mengatur letak Detail Hasil */}
+          {/* Risiko Jatuh Mengatur letak Detail Hasil */}
           <p style={{ position: 'absolute' }}></p>
           <ul style={{ position: 'relative', listStyleType: 'none', padding: 0 }}>
-            <li style={{ position: 'absolute', left: '600px', top: '-1810px' }}>{result1}</li>
-            <li style={{ position: 'absolute', left: '600px', top: '-1762px' }}>{result2}</li>
+            <li style={{ position: 'absolute', left: '594px', top: '-1780px' }}>{result1}</li>
+            <li style={{ position: 'absolute', left: '594px', top: '-1728px' }}>{result2}</li>
           </ul>
           {/* Menambahkan Total Skor dengan pengaturan posisi */}
-          <p style={{ position: 'absolute', left: '600px', top: '-1688px' }}>{totalScore}</p>
+          <p style={{ position: 'absolute', left: '594px', top: '-1658px' }}>{totalScore}</p>
 
           {/* Menambahkan Status Risiko dengan pengaturan posisi */}
-          <p style={{ position: 'absolute', left: '600px', top: '-1648px' }}>{riskLevel}</p>
+          <p style={{ position: 'absolute', left: '594px', top: '-1618px' }}>{riskLevel}</p>
         </div>
 
+        {/* Skrining gizi */}
         <div className="result-container" style={{ position: 'absolute', left: '300px', top: '600px' }}>
-          <h4 style={{ position: 'absolute', left: '288px', top: '1290px' }}>{weightLossScore}</h4>
-          <h4 style={{ position: 'absolute', left: '288px', top: '1390px' }}>{appetiteScore}</h4>
-          <h4 style={{ position: 'absolute', left: '288px', top: '1478px' }}>{totalNutritionScore}</h4>
+          <h4 style={{ position: 'absolute', left: '280px', top: '1250px' }}>{weightLossScore}</h4>
+          <h4 style={{ position: 'absolute', left: '280px', top: '1350px' }}>{appetiteScore}</h4>
+          <h4 style={{ position: 'absolute', left: '280px', top: '1438px' }}>{totalNutritionScore}</h4>
         </div>
 
         {/* Tampilkan hasil */}
@@ -3176,13 +3051,13 @@ const Ass = () => {
         </div>
 
 
-        {/* Menampilkan Hasil */}
+        {/* Gizi Anak */}
         <div className="result-container" style={{ position: 'absolute', left: '300px', top: '600px' }}>
-          <h4 style={{ position: 'absolute', left: '288px', top: '1684px' }}>{diseaseRiskScore}</h4>
-          <h4 style={{ position: 'absolute', left: '288px', top: '1730px' }}>{malnutritionStatusScore}</h4>
-          <h4 style={{ position: 'absolute', left: '288px', top: '1800px' }}>{nutritionConditionsScore}</h4>
-          <h4 style={{ position: 'absolute', left: '288px', top: '1880px' }}>{weightChangeScore}</h4>
-          <h4 style={{ position: 'absolute', left: '288px', top: '1966px' }}>{totalChildNutritionScore}</h4>
+          <h4 style={{ position: 'absolute', left: '280px', top: '1644px' }}>{diseaseRiskScore}</h4>
+          <h4 style={{ position: 'absolute', left: '280px', top: '1690px' }}>{malnutritionStatusScore}</h4>
+          <h4 style={{ position: 'absolute', left: '280px', top: '1760px' }}>{nutritionConditionsScore}</h4>
+          <h4 style={{ position: 'absolute', left: '280px', top: '1840px' }}>{weightChangeScore}</h4>
+          <h4 style={{ position: 'absolute', left: '280px', top: '1926px' }}>{totalChildNutritionScore}</h4>
         </div>
 
         <div style={{ marginTop: "20px", position: "relative" }}>
@@ -3201,21 +3076,21 @@ const Ass = () => {
           ))}
         </div>
 
-        {/* Menampilkan hasil setelah pengisian */}
+        {/* Nyeri */}
         <div className="pain-result">
           <h4 style={{ position: 'absolute', top: '100px', left: '50px' }}></h4>
 
           {!isPain ? (
-            // Jika tidak ada nyeri
-            <p style={{ position: 'absolute', top: '1450px', left: '150px' }}><strong>✔️</strong></p>
+            // Tidak...Jika tidak ada nyeri
+            <p style={{ position: 'absolute', top: '1420px', left: '150px' }}><strong>✔️</strong></p>
           ) : (
-            // Jika ada nyeri
+            // Ya...Jika ada nyeri
             <>
-              <p style={{ position: 'absolute', top: '1630px', left: '270px' }}><strong></strong> {painScale}</p>
-              <p style={{ position: 'absolute', top: '1630px', left: '290px' }}><strong></strong> {painCategory}</p>
-              <p style={{ position: 'absolute', top: '1610px', left: '270px' }}><strong></strong> {painLocation || 'Belum diisi'}</p>
-              <p style={{ position: 'absolute', top: '1610px', left: '420px' }}><strong></strong> {painFrequency || 'Belum diisi'}</p>
-              <p style={{ position: 'absolute', top: '1610px', left: '544px' }}><strong></strong> {painDuration || 'Belum diisi'}</p>
+              <p style={{ position: 'absolute', top: '1600px', left: '262px' }}><strong></strong> {painScale}</p>
+              <p style={{ position: 'absolute', top: '1600px', left: '282px' }}><strong></strong> {painCategory}</p>
+              <p style={{ position: 'absolute', top: '1580px', left: '262px' }}><strong></strong> {painLocation || 'Belum diisi'}</p>
+              <p style={{ position: 'absolute', top: '1580px', left: '412px' }}><strong></strong> {painFrequency || 'Belum diisi'}</p>
+              <p style={{ position: 'absolute', top: '1580px', left: '536px' }}><strong></strong> {painDuration || 'Belum diisi'}</p>
             </>
           )}
         </div>
@@ -3305,12 +3180,31 @@ const Ass = () => {
           {currentDateTime.format("HH:mm:ss")}
         </div>
 
-
-        {medicalSignature && (
-          <div className="overlay-text overlay-text--signature-display" style={{ left: '30px', top: '2816px' }}>
-            <img src={medicalSignature} alt="Medical Personnel Signature" />
+        {/* Area Tampilan Hasil e-Signature */}
+        {uploadedSignature && (
+          <div
+            className="signature-display"
+            style={{
+              position: "relative",
+              top: `${signaturePosition.top}px`,
+              left: `${signaturePosition.left}px`,
+              border: "none", // Hilangkan garis border
+              outline: "none", // Hilangkan garis outline
+              padding: "10px",
+              marginTop: "20px",
+            }}
+          >
+            <img
+              src={uploadedSignature} // Gambar tanda tangan yang diunggah
+              alt="Uploaded Signature"
+              style={{
+                maxWidth: "100%",
+                maxHeight: "100px",
+              }}
+            />
           </div>
         )}
+
 
         <div
           style={{
@@ -3325,6 +3219,7 @@ const Ass = () => {
         </div>
       </div>
       <button onClick={handleDownload} className="ass-download-button">Download</button>
+
     </div >
   );
 };
