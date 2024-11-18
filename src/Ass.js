@@ -62,8 +62,8 @@ const Ass = () => {
 
   // Posisi tetap untuk hasil
   const roomPosition = {
-    left: "542px",
-    top: "-2686px",
+    left: "545px",
+    top: "-2735px",
   };
 
   // Handler untuk mengubah input ruangan
@@ -80,9 +80,9 @@ const Ass = () => {
 
   // Posisi tetap untuk hasil
   const dataSourcePositions = {
-    pasien: { left: "190px", top: "-2664px" },
-    keluarga: { left: "316px", top: "-2664px" },
-    lainnya: { left: "434px", top: "-2664px" },
+    pasien: { left: "190px", top: "-2712px" },
+    keluarga: { left: "316px", top: "-2712px" },
+    lainnya: { left: "434px", top: "-2712px" },
   };
 
   // Handler untuk mengubah pilihan sumber data
@@ -108,7 +108,7 @@ const Ass = () => {
   // Posisi tetap untuk hasil
   const complaintPosition = {
     left: "94px",
-    top: "-2600px",
+    top: "-2644px",
   };
 
   // Handler untuk mengubah keluhan utama
@@ -128,12 +128,12 @@ const Ass = () => {
 
   // Posisi untuk setiap hasil
   const [examPositions, setExamPositions] = useState({
-    bb: { left: "122px", top: "-2496px" },
-    tb: { left: "338px", top: "-2496px" },
-    td: { left: "122px", top: "-2478px" },
-    sb: { left: "618px", top: "-2478px" },
-    rr: { left: "500px", top: "-2478px" },
-    nadi: { left: "338px", top: "-2478px" },
+    bb: { left: "124px", top: "-2546px" },
+    tb: { left: "338px", top: "-2546px" },
+    td: { left: "124px", top: "-2528px" },
+    sb: { left: "620px", top: "-2528px" },
+    rr: { left: "500px", top: "-2528px" },
+    nadi: { left: "340px", top: "-2528px" },
   });
 
   // Handler untuk mengubah nilai pemeriksaan fisik
@@ -186,8 +186,8 @@ const Ass = () => {
 
   // Posisi hasil untuk setiap pilihan
   const [hospitalizationPositions, setHospitalizationPositions] = useState({
-    tidak: { left: "260px", top: "-2406px" },
-    ya: { left: "308px", top: "-2406px" },
+    tidak: { left: "266px", top: "-2452px" },
+    ya: { left: "364px", top: "-2452px" },
   });
 
   // Handler untuk mengubah status radio button
@@ -225,9 +225,9 @@ const Ass = () => {
 
   // proses penyembuhan Posisi untuk setiap hasil
   const recoveryPositions = {
-    tidak: { left: "272px", top: "-2370px" },
-    ya: { left: "380px", top: "-2370x" },
-    details: { left: "352px", top: "-2368px" },
+    tidak: { left: "274px", top: "-2414px" },
+    ya: { left: "374px", top: "-2414x" },
+    details: { left: "362px", top: "-2414px" },
   };
 
   // Handler untuk mengubah status radio button
@@ -284,14 +284,14 @@ const Ass = () => {
 
   // Riwayat Penyakit keluarga Menyimpan posisi (left, top) untuk setiap hasil yang dipilih
   const [familyDiseasePositions, setFamilyDiseasePositions] = useState({
-    tidak: { left: '114px', top: '602px' },
-    ya: { left: '210px', top: '602px' },
-    hipertensi: { left: '250px', top: '602px' },
-    jantung: { left: '334px', top: '602px' },
-    paru: { left: '418px', top: '602px' },
-    dm: { left: '472px', top: '602px' },
-    ginjal: { left: '534px', top: '602px' },
-    lainnya: { left: '602px', top: '602px' },
+    tidak: { left: '114px', top: '608px' },
+    ya: { left: '210px', top: '608px' },
+    hipertensi: { left: '250px', top: '608px' },
+    jantung: { left: '334px', top: '608px' },
+    paru: { left: '418px', top: '608px' },
+    dm: { left: '472px', top: '608px' },
+    ginjal: { left: '534px', top: '608px' },
+    lainnya: { left: '604px', top: '608px' },
   });
 
   // Handler untuk mengubah nilai checkbox
@@ -318,13 +318,13 @@ const Ass = () => {
 
   // Menyimpan posisi (left, top) untuk setiap pilihan
   const [dependencyPositions, setDependencyPositions] = useState({
-    tidak: { left: "114px", top: "-2312px" },
-    ya: { left: "210px", top: "-2312px" },
-    "obat-obatan": { left: "294px", top: "-2312px" },
-    rokok: { left: "409px", top: "-2312px" },
-    alkohol: { left: "482px", top: "-2312px" },
-    lainnya: { left: "504px", top: "-2312px" },
-    dependencyDetails: { left: "564px", top: "-2312px" },
+    tidak: { left: "114px", top: "-2360px" },
+    ya: { left: "210px", top: "-2360px" },
+    "obat-obatan": { left: "294px", top: "-2360px" },
+    rokok: { left: "417px", top: "-2360px" },
+    alkohol: { left: "490px", top: "-2360px" },
+    lainnya: { left: "512px", top: "-2360px" },
+    dependencyDetails: { left: "572px", top: "-2360px" },
   });
 
   // Handler untuk mengubah status checkbox
@@ -349,9 +349,9 @@ const Ass = () => {
 
   //pekerjaan Menyimpan posisi (left, top) untuk setiap pilihan dan teks rincian pekerjaan
   const [employmentPositions, setEmploymentPositions] = useState({
-    tidak: { left: "130px", top: "-2280px" },
-    ya: { left: "200px", top: "-2280px" },
-    employmentDetails: { left: "220px", top: "-2280px" }, // Posisi untuk teks detail
+    tidak: { left: "130px", top: "-2320px" },
+    ya: { left: "200px", top: "-2320px" },
+    employmentDetails: { left: "220px", top: "-2320px" }, // Posisi untuk teks detail
   });
 
   // Handler untuk mengubah status radio button
@@ -383,11 +383,11 @@ const Ass = () => {
 
   // Riwayat alergi Menyimpan posisi (left, top) untuk setiap hasil
   const [allergyPositions, setAllergyPositions] = useState({
-    tidak: { left: "196px", top: "-2264px" },
-    ya: { left: "240px", top: "-2264px" },
-    obat: { left: "292px", top: "-2264px" }, // Posisi untuk detail obat
-    makanan: { left: "478px", top: "-2264px" }, // Posisi untuk detail makanan
-    lainnya: { left: "608px", top: "-2264px" }, // Posisi untuk detail lainnya
+    tidak: { left: "200px", top: "-2310px" },
+    ya: { left: "240px", top: "-2310px" },
+    obat: { left: "292px", top: "-2310px" }, // Posisi untuk detail obat
+    makanan: { left: "478px", top: "-2310px" }, // Posisi untuk detail makanan
+    lainnya: { left: "618px", top: "-2310px" }, // Posisi untuk detail lainnya
   });
 
   // Handler untuk mengubah status radio button
@@ -428,9 +428,9 @@ const Ass = () => {
 
   // Pemakaian Obat Posisi untuk setiap hasil
   const medicationPositions = {
-    tidak: { left: "118px", top: "-2238px" },
-    ya: { left: "195px", top: "-2282px" },
-    details: { left: "300px", top: "-2282px" },
+    tidak: { left: "118px", top: "-2280px" },
+    ya: { left: "195px", top: "-2280px" },
+    details: { left: "300px", top: "-2280px" },
   };
 
   // Handler untuk mengubah status radio button
@@ -454,9 +454,9 @@ const Ass = () => {
 
   // State untuk posisi
   const [historyPositions, setHistoryPositions] = useState({
-    cemas: { left: '114px', top: '-2180px' },
-    takut: { left: '204px', top: '-2180px' },
-    sedih: { left: '284px', top: '-2180px' },
+    cemas: { left: '114px', top: '-2226px' },
+    takut: { left: '207px', top: '-2226px' },
+    sedih: { left: '284px', top: '-2226px' },
   });
 
   // Fungsi untuk menangani perubahan radio button
@@ -470,8 +470,8 @@ const Ass = () => {
 
   // State untuk posisi
   const [statusPositions, setStatusPositions] = useState({
-    tidakBaik: { left: '350px', top: '-2140px' },
-    baikKerabat: { left: '428px', top: '-2140px' },
+    tidakBaik: { left: '350px', top: '-2182px' },
+    baikKerabat: { left: '428px', top: '-2182px' },
   });
 
   // Fungsi untuk menangani perubahan pilihan radio button
@@ -488,9 +488,9 @@ const Ass = () => {
 
   // State untuk menyimpan posisi (left, top) dari hasil
   const [contactPositions, setContactPositions] = useState({
-    name: { left: "164px", top: "-2090px" },
-    relation: { left: "338px", top: "-2090px" },
-    phone: { left: "500px", top: "-2090px" },
+    name: { left: "164px", top: "-2133px" },
+    relation: { left: "340px", top: "-2133px" },
+    phone: { left: "504px", top: "-2133px" },
   });
 
   // Handler untuk mengubah input
@@ -517,8 +517,8 @@ const Ass = () => {
 
   // State untuk posisi hasil
   const [activityPosition, setActivityPosition] = useState({
-    left: "350px",
-    top: "-2060px",
+    left: "354px",
+    top: "-2098px",
   });
 
   // Handler untuk mengubah input aktivitas keagamaan
@@ -551,16 +551,16 @@ const Ass = () => {
 
   // State untuk posisi hasil
   const [needsPositions, setNeedsPositions] = useState({
-    tidak: { left: "90px", top: "-1990px" },
-    ya: { left: "160px", top: "-1990px" },
-    pendengaran: { left: "264px", top: "-1990px" },
-    penglihatan: { left: "382px", top: "-1990px" },
-    kognitif: { left: "500px", top: "-1990px" },
-    fisik: { left: "598px", top: "-1990px" },
-    budaya: { left: "268px", top: "-1970px" },
-    emosi: { left: "386px", top: "-1970px" },
-    bahasa: { left: "500px", top: "-1970px" },
-    lainnya: { left: "598px", top: "-1970px" },
+    tidak: { left: "90px", top: "-2024px" },
+    ya: { left: "160px", top: "-2024px" },
+    pendengaran: { left: "264px", top: "-2024px" },
+    penglihatan: { left: "384px", top: "-2024px" },
+    kognitif: { left: "500px", top: "-2024px" },
+    fisik: { left: "598px", top: "-2024px" },
+    budaya: { left: "268px", top: "-2012px" },
+    emosi: { left: "386px", top: "-2012px" },
+    bahasa: { left: "500px", top: "-2012px" },
+    lainnya: { left: "598px", top: "-2012px" },
   });
 
   // Handler untuk mengubah status checkbox
@@ -591,8 +591,8 @@ const Ass = () => {
 
   // State untuk mengatur posisi hasil
   const [translatorPositions, setTranslatorPositions] = useState({
-    tidak: { left: "264px", top: "-1956px" },
-    iya: { left: "354px", top: "-1956px" },
+    tidak: { left: "264px", top: "-1994px" },
+    iya: { left: "354px", top: "-1994px" },
   });
 
   // Handler untuk mengubah status radio button
@@ -628,8 +628,8 @@ const Ass = () => {
 
   // State untuk mengatur posisi hasil
   const [signLanguagePositions, setSignLanguagePositions] = useState({
-    tidak: { left: "608px", top: "-1958px" },
-    iya: { left: "714px", top: "-1956px" },
+    tidak: { left: "612px", top: "-1994px" },
+    iya: { left: "722px", top: "-1994px" },
   });
 
   // Handler untuk mengubah pilihan radio button
@@ -2340,10 +2340,10 @@ const Ass = () => {
       >
 
         <img src={AssImg} alt="Certificate" className="cppt-image" />
-        <div className="overlay-text overlay-text--recipient-name" style={{ left: '520px', top: '21px' }}>{nomorRM}</div>
-        <div className="overlay-text overlay-text--recipient-name" style={{ left: '520px', top: '44px' }}>{patientName}</div>
-        <div className="overlay-text overlay-text--recipient-name" style={{ left: '520px', top: '68px' }}>{ageGender}</div>
-        <div className="overlay-text overlay-text--recipient-name" style={{ left: '520px', top: '90px' }}>{address1}</div>
+        <div className="overlay-text overlay-text--recipient-name" style={{ left: '520px', top: '24px' }}>{nomorRM}</div>
+        <div className="overlay-text overlay-text--recipient-name" style={{ left: '520px', top: '46px' }}>{patientName}</div>
+        <div className="overlay-text overlay-text--recipient-name" style={{ left: '520px', top: '70px' }}>{ageGender}</div>
+        <div className="overlay-text overlay-text--recipient-name" style={{ left: '520px', top: '92px' }}>{address1}</div>
 
 
         <div style={{ marginTop: '20px', position: 'relative' }}>
@@ -2518,8 +2518,8 @@ const Ass = () => {
         <div
           className="overlay-text overlay-text--surgery-history"
           style={{
-            left: surgeryHistory ? '308px' : '260px', //ya:tidak
-            top: surgeryHistory ? '548px' : '548px',
+            left: surgeryHistory ? '364px' : '266px', //ya:tidak
+            top: surgeryHistory ? '556px' : '556px',
             fontSize: '14px', //operasi
           }}
         >
@@ -2595,8 +2595,8 @@ const Ass = () => {
           className="overlay-text overlay-text--history-illness"
           style={{
             // Mengatur posisi berdasarkan kondisi historyIllness
-            left: historyIllness ? '337px' : '260px',  // Riwayat penyakit lalu
-            top: historyIllness ? '510px' : '510px', // Sama untuk keduanya, bisa Anda sesuaikan
+            left: historyIllness ? '362px' : '268px',  // Riwayat penyakit lalu
+            top: historyIllness ? '516px' : '516px', // Sama untuk keduanya, bisa Anda sesuaikan
             fontSize: '14px',
           }}
         >
@@ -2630,10 +2630,9 @@ const Ass = () => {
                 position: "absolute",
                 left: dependencyPositions.dependencyDetails.left,
                 top: dependencyPositions.dependencyDetails.top,
-                fontWeight: "bold",
               }}
             >
-              <strong>✔️Lainnya</strong> {dependencyDetails}
+              ✔️Lainnya {dependencyDetails}
             </div>
           )}
         </div>
@@ -2754,11 +2753,10 @@ const Ass = () => {
                     position: "absolute",
                     left: medicationPositions.details.left,
                     top: medicationPositions.details.top,
-                    fontWeight: "bold",
-                    fontSize: "16px",
+                    fontSize: "14px",
                   }}
                 >
-                  <strong>Detail:</strong> {medicationDetails}
+                  Detail:{medicationDetails}
                 </div>
               )}
             </>
@@ -3154,8 +3152,8 @@ const Ass = () => {
         </div>
 
 
-        <div className="overlay-text overlay-text--current-time" style={{ left: '34px', top: '110px' }}>{moment(selectedDate).format('DD/MM/YYYY')}</div>
-        <div className="overlay-text overlay-text--current-time" style={{ left: '266px', top: '110px' }}>{moment(selectedDate).format('HH:mm')}</div>
+        <div className="overlay-text overlay-text--current-time" style={{ left: '34px', top: '115px' }}>{moment(selectedDate).format('DD/MM/YYYY')}</div>
+        <div className="overlay-text overlay-text--current-time" style={{ left: '266px', top: '115px' }}>{moment(selectedDate).format('HH:mm')}</div>
 
         <div
           style={{
