@@ -4,9 +4,11 @@ import { saveAs } from 'file-saver';
 import html2canvas from 'html2canvas';
 import moment from 'moment-timezone';
 import CpptImg from './images/cppt-img.png';
+import { useNavigate } from "react-router-dom";
 import './Cppt.css';
 
 const Cppt = () => {
+  const navigate = useNavigate();
   const [nomorRM, setNomorRM] = useState('');
   const [patientName, setPatientName] = useState('');
   const [ageGender, setAgeGender] = useState('');
@@ -17,7 +19,28 @@ const Cppt = () => {
   const [profesi, setProfesi] = useState('');
   const [soap, setSoap] = useState('');
   const [instruksi, setInstruksi] = useState('');
-  const [medicalSignature, setMedicalSignature] = useState(null);
+
+  const [uploadedSignature, setUploadedSignature] = useState(null);
+  const [signaturePosition, setSignaturePosition] = useState({ top: -660, left: 570 });
+
+  const handleSignatureUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setUploadedSignature(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const updateSignaturePosition = (axis, value) => {
+    setSignaturePosition((prevPosition) => ({
+      ...prevPosition,
+      [axis]: value,
+    }));
+  };
+
 
   const certRef = useRef();
   const medicalSigCanvasRef = useRef();
@@ -26,15 +49,6 @@ const Cppt = () => {
     setSelectedDate(moment().tz('Asia/Jakarta').format('YYYY-MM-DDTHH:mm'));
   }, []);
 
-  const handleClearSignature = (ref, setSignature) => {
-    ref.current.clear();
-    setSignature(null);
-  };
-
-  const handleSendSignature = (ref, setSignature) => {
-    const signatureDataUrl = ref.current.toDataURL();
-    setSignature(signatureDataUrl);
-  };
 
   const handleDownload = () => {
     setTimeout(() => {
@@ -87,13 +101,13 @@ const Cppt = () => {
         <label className="newcppt-form__label">Jenis Kelamin:
           <input type="text" className="newcppt-form__input" value={gender} onChange={e => setGender(e.target.value)} />
         </label>
-        <label className="newcppt-form__label">Alamat 1:
+        <label className="newcppt-form__label">Alamat:
           <input type="text" className="newcppt-form__input" value={address1} onChange={e => setAddress1(e.target.value)} />
         </label>
         <label className="newcppt-form__label">Tanggal:
           <input type="datetime-local" className="newcppt-form__input" value={selectedDate} onChange={e => setSelectedDate(e.target.value)} />
         </label>
-        <label className="newcppt-form__label">Nama Penanda Tangan:
+        <label className="newcppt-form__label">Nama Tenaga Medis:
           <input type="text" className="newcppt-form__input" value={signatureName} onChange={e => setSignatureName(e.target.value)} />
         </label>
         <label className="newcppt-form__label">Profesi:
@@ -121,44 +135,65 @@ const Cppt = () => {
 
       <div className="signature-container">
         <h4>Signature for Medical Personnel</h4>
-        <SignatureCanvas ref={medicalSigCanvasRef} penColor="black" canvasProps={{ className: 'signature-canvas' }} />
-        <div className="newcppt-buttons">
-          <button className="newcppt-buttons__button newcppt-buttons__button--clear" onClick={() => handleClearSignature(medicalSigCanvasRef, setMedicalSignature)}>Clear</button>
-          <button className="newcppt-buttons__button newcppt-buttons__button--download" onClick={() => handleSendSignature(medicalSigCanvasRef, setMedicalSignature)}>Send e-Sign</button>
-        </div>
+        <h4>Upload Signature</h4>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleSignatureUpload}
+          style={{ marginBottom: "10px" }}
+        />
       </div>
 
       <div ref={certRef} className="newcppt-certificate-container">
         <img src={CpptImg} alt="Certificate" className="newcppt-image" />
-        <div className="text-overlay text-overlay--recipient-name" style={{ left: '190px', top: '1310px' }}>{nomorRM}</div>
-        <div className="text-overlay text-overlay--recipient-name" style={{ left: '190px', top: '1330px' }}>{patientName}</div>
-        <div className="text-overlay text-overlay--recipient-name" style={{ left: '190px', top: '1350px' }}>{ageGender}</div>
-        <div className="text-overlay text-overlay--recipient-name" style={{ left: '190px', top: '1370px' }}>{gender}</div>
-        <div className="text-overlay text-overlay--recipient-name" style={{ left: '190px', top: '1390px' }}>{address1}</div>
-        <div className="text-overlay text-overlay--current-time" style={{ top: '1590px' }}>
+        <div className="text-overlay text-overlay--recipient-name" style={{ left: '190px', top: '1230px' }}>{nomorRM}</div>
+        <div className="text-overlay text-overlay--recipient-name" style={{ left: '190px', top: '1250px' }}>{patientName}</div>
+        <div className="text-overlay text-overlay--recipient-name" style={{ left: '190px', top: '1270px' }}>{ageGender}</div>
+        <div className="text-overlay text-overlay--recipient-name" style={{ left: '190px', top: '1290px' }}>{gender}</div>
+        <div className="text-overlay text-overlay--recipient-name" style={{ left: '190px', top: '1310px' }}>{address1}</div>
+        <div className="text-overlay text-overlay--current-time" style={{ top: '1510px' }}>
           {moment(selectedDate).format('DD/MM/YYYY')}
         </div>
-        <div className="text-overlay text-overlay--current-time" style={{ top: '1610px' }}>
+        <div className="text-overlay text-overlay--current-time" style={{ top: '1532px' }}>
           {moment(selectedDate).format('HH:mm:ss')}
         </div>
-        <div className="text-overlay text-overlay--recipient-name" style={{ left: '145px', top: '1625px' }}>{profesi}</div>
+        <div className="text-overlay text-overlay--recipient-name" style={{ left: '145px', top: '1552px' }}>{profesi}</div>
 
-        <div className="text-overlay text-overlay--soap" style={{ left: '210px', top: '1730px', maxWidth: '212px' }}>
+        <div className="text-overlay text-overlay--soap" style={{ left: '210px', top: '1650px', maxWidth: '212px' }}>
           {soap.split('\n').map((line, index) => (
             <div key={index}>{line}</div>
           ))}
         </div>
 
-        <div className="text-overlay text-overlay--instruksi" style={{ left: '444px', top: '1730px', maxWidth: '126px' }}>
+        <div className="text-overlay text-overlay--instruksi" style={{ left: '444px', top: '1650px', maxWidth: '126px' }}>
           {instruksi.split('\n').map((line, index) => (
             <div key={index}>{line}</div>
           ))}
         </div>
 
-        <div className="text-overlay text-overlay--signature-display" style={{ left: '594px', top: '1780px' }}>{signatureName}</div>
-        {medicalSignature && (
-          <div className="text-overlay text-overlay--signature-display" style={{ left: '440px', top: '1716px' }}>
-            <img src={medicalSignature} alt="Medical Personnel Signature" />
+        <div className="text-overlay text-overlay--signature-display" style={{ left: '594px', top: '1760px' }}>{signatureName}</div>
+        {/* Area Tampilan Hasil e-Signature */}
+        {uploadedSignature && (
+          <div
+            className="signature-display"
+            style={{
+              position: "relative",
+              top: `${signaturePosition.top}px`,
+              left: `${signaturePosition.left}px`,
+              border: "none", // Hilangkan garis border
+              outline: "none", // Hilangkan garis outline
+              padding: "10px",
+              marginTop: "20px",
+            }}
+          >
+            <img
+              src={uploadedSignature} // Gambar tanda tangan yang diunggah
+              alt="Uploaded Signature"
+              style={{
+                maxWidth: "70%",
+                maxHeight: "100px",
+              }}
+            />
           </div>
         )}
       </div>
@@ -166,6 +201,13 @@ const Cppt = () => {
       <div className="newcppt-buttons">
         <button className="newcppt-buttons__button newcppt-buttons__button--download" onClick={handleDownload}>Download CPPT</button>
       </div>
+      <div
+            className="back-to-home"
+            onClick={() => navigate("/")}
+            title="Kembali ke Beranda"
+        >
+            🏠 {/* Anda dapat mengganti dengan ikon sesuai kebutuhan */}
+        </div>
     </div>
   );
 };

@@ -4,11 +4,13 @@ import { saveAs } from 'file-saver';
 import html2canvas from 'html2canvas';
 import moment from 'moment-timezone';
 import AssImg from './images/Dok-Ass.png';
+import { useNavigate } from "react-router-dom";
 import './Ass.css';
 
 const Ass = () => {
+  const navigate = useNavigate();
   const [medicalOfficerName, setMedicalOfficerName] = useState("");
-  const [namePosition, setNamePosition] = useState({ left: "100px", top: "2844px" });
+  const [namePosition, setNamePosition] = useState({ left: "100px", top: "2898px" });
 
   // Handler untuk mengubah nama petugas medis
   const handleNameChange = (event) => {
@@ -39,8 +41,8 @@ const Ass = () => {
 
   const [currentDateTime, setCurrentDateTime] = useState(moment().tz("Asia/Jakarta"));
   const [datetimePositions, setDatetimePositions] = useState({
-    date: { left: "127px", top: "2702px" },
-    time: { left: "254px", top: "2702px" },
+    date: { left: "127px", top: "2752px" },
+    time: { left: "254px", top: "2752px" },
   });
 
   // Perbarui waktu setiap detik
@@ -649,44 +651,35 @@ const Ass = () => {
   };
 
 
-  // State untuk menyimpan pilihan tindakan keperawatan
-  const [nursingAction, setNursingAction] = useState("");
-
-  // State untuk detail jika "Lain-lain" dipilih
-  const [nursingActionDetails, setNursingActionDetails] = useState("");
-
   // State untuk mengatur posisi hasil
   const [actionPositions, setActionPositions] = useState({
-    rehabilitasi: { left: "350px", top: "-1924px" },
-    managementNyeri: { left: "532px", top: "-1924px" },
-    lainLain: { left: "88px", top: "-1908px" },
+    diagnosaManagementPenyakit: { left: "90px", top: "-1984px" },
+    terapi: { left: "355px", top: "-1984px" },
+    dietNutrisi: { left: "536px", top: "-1984px" },
+    tindakanKeperawatan: {
+      symbol: { left: "90px", top: "-1964px" }, // Posisi untuk simbol ✔️
+      text: { left: "238px", top: "-1960px" },  // Posisi untuk teks nursingActionDetails
+    },
+    rehabilitasi: { left: "350px", top: "-1964px" },
+    managementNyeri: { left: "532px", top: "-1964px" },
+    lainLain: { left: "88px", top: "-1946px" },
   });
 
-  // Handler untuk mengubah pilihan tindakan keperawatan
+  const [nursingAction, setNursingAction] = useState("");
+  const [nursingActionDetails, setNursingActionDetails] = useState("");
+
   const handleActionChange = (event) => {
     const { value } = event.target;
     setNursingAction(value);
 
-    // Reset detail jika pilihan bukan "Lain-lain"
-    if (value !== "lainLain") {
+    // Reset detail jika pilihan bukan "lainLain" atau "tindakanKeperawatan"
+    if (value !== "lainLain" && value !== "tindakanKeperawatan") {
       setNursingActionDetails("");
     }
   };
 
-  // Ganti nama fungsi untuk mengubah detail
   const updateActionDetails = (event) => {
     setNursingActionDetails(event.target.value);
-  };
-
-  // Handler untuk mengatur posisi hasil
-  const adjustActionPosition = (key, axis, value) => {
-    setActionPositions((prev) => ({
-      ...prev,
-      [key]: {
-        ...prev[key],
-        [axis]: `${value}px`,
-      },
-    }));
   };
 
 
@@ -697,18 +690,18 @@ const Ass = () => {
 
   // State untuk mengatur posisi hasil
   const [mstPositions, setMstPositions] = useState({
-    tidak: { left: "306px", top: "-1074px" },
-    ya: { left: "368px", top: "-1074px" },
-    dm: { left: "456px", top: "-1074px" },
-    ginjal: { left: "514px", top: "-1074px" },
-    hi: { left: "562px", top: "-1074px" },
-    jantung: { left: "116px", top: "-1058px" },
-    paru: { left: "168px", top: "-1036px" },
-    stroke: { left: "220px", top: "-1036px" },
-    kanker: { left: "286px", top: "-1036px" },
-    imunitas: { left: "426px", top: "-1036px" },
-    geriatri: { left: "490px", top: "-1036px" },
-    lainnya: { left: "138px", top: "-1020px" },
+    tidak: { left: "306px", top: "-1094px" },
+    ya: { left: "370px", top: "-1094px" },
+    dm: { left: "456px", top: "-1094px" },
+    ginjal: { left: "516px", top: "-1094px" },
+    hi: { left: "564px", top: "-1094px" },
+    jantung: { left: "116px", top: "-1080px" },
+    paru: { left: "168px", top: "-1058px" },
+    stroke: { left: "222px", top: "-1058px" },
+    kanker: { left: "286px", top: "-1058px" },
+    imunitas: { left: "426px", top: "-1058px" },
+    geriatri: { left: "490px", top: "-1058px" },
+    lainnya: { left: "138px", top: "-1038px" },
   });
 
   // Handler untuk mengubah pilihan
@@ -750,18 +743,18 @@ const Ass = () => {
 
   // State untuk mengatur posisi hasil
   const [strongKidsPositions, setStrongKidsPositions] = useState({
-    tidak: { left: "306px", top: "-596px" },
-    ya: { left: "368px", top: "-596px" },
-    dm: { left: "456px", top: "-596px" },
-    ginjal: { left: "514px", top: "-596px" },
-    hi: { left: "562px", top: "-596px" },
-    jantung: { left: "116px", top: "-582px" },
-    paru: { left: "165px", top: "-562px" },
-    stroke: { left: "218px", top: "-562px" },
-    kanker: { left: "286px", top: "-562px" },
-    imunitas: { left: "426px", top: "-562px" },
-    geriatri: { left: "490px", top: "-562px" },
-    lainnya: { left: "134px", top: "-546px" },
+    tidak: { left: "306px", top: "-600px" },
+    ya: { left: "368px", top: "-600px" },
+    dm: { left: "456px", top: "-600px" },
+    ginjal: { left: "518px", top: "-600px" },
+    hi: { left: "566px", top: "-600px" },
+    jantung: { left: "116px", top: "-586px" },
+    paru: { left: "165px", top: "-566px" },
+    stroke: { left: "222px", top: "-566px" },
+    kanker: { left: "286px", top: "-566px" },
+    imunitas: { left: "426px", top: "-566px" },
+    geriatri: { left: "490px", top: "-566px" },
+    lainnya: { left: "138px", top: "-546px" },
   });
 
   // Handler untuk mengubah pilihan
@@ -815,10 +808,10 @@ const Ass = () => {
 
   // State untuk posisi tiap relief
   const [positions, setPositions] = useState({
-    minumObat: { left: '92px', top: '-1520px' },
-    istirahat: { left: '234px', top: '-1520px' },
-    mendengarMusik: { left: '348px', top: '-1520px' },
-    berubahPosisi: { left: '534px', top: '-1520px' },
+    minumObat: { left: '92px', top: '-1540px' },
+    istirahat: { left: '234px', top: '-1540px' },
+    mendengarMusik: { left: '348px', top: '-1540px' },
+    berubahPosisi: { left: '534px', top: '-1540px' },
   });
 
   // Fungsi untuk menangani perubahan checkbox
@@ -1802,17 +1795,11 @@ const Ass = () => {
         {translatorNeeded === "iya" && (
           <div style={{ marginTop: "10px" }}>
             <input
+              className="cppt-form__input"
               type="text"
               value={translatorDetails}
               onChange={handleTranslatorDetailsChange}
               placeholder="Sebutkan?"
-              style={{
-                padding: "5px",
-                fontSize: "14px",
-                width: "300px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
             />
           </div>
         )}
@@ -1848,6 +1835,54 @@ const Ass = () => {
 
         <h4>Tindakan Keperawatan?</h4>
         <div>
+          {/* Radio Button Diagnosa Management Penyakit */}
+          <label>
+            <input
+              type="radio"
+              name="nursingAction"
+              value="diagnosaManagementPenyakit"
+              checked={nursingAction === "diagnosaManagementPenyakit"}
+              onChange={handleActionChange}
+            />
+            Diagnosa Management Penyakit
+          </label>
+
+          {/* Radio Button Terapi */}
+          <label>
+            <input
+              type="radio"
+              name="nursingAction"
+              value="terapi"
+              checked={nursingAction === "terapi"}
+              onChange={handleActionChange}
+            />
+            Terapi
+          </label>
+
+          {/* Radio Button Diet Nutrisi */}
+          <label>
+            <input
+              type="radio"
+              name="nursingAction"
+              value="dietNutrisi"
+              checked={nursingAction === "dietNutrisi"}
+              onChange={handleActionChange}
+            />
+            Diet Nutrisi
+          </label>
+
+          {/* Radio Button Tindakan Keperawatan */}
+          <label>
+            <input
+              type="radio"
+              name="nursingAction"
+              value="tindakanKeperawatan"
+              checked={nursingAction === "tindakanKeperawatan"}
+              onChange={handleActionChange}
+            />
+            Tindakan Keperawatan
+          </label>
+
           {/* Radio Button Rehabilitasi */}
           <label>
             <input
@@ -1885,7 +1920,20 @@ const Ass = () => {
           </label>
         </div>
 
-        {/* Tampilkan input jika "Lain-lain" dipilih */}
+        {/* Input untuk Tindakan Keperawatan */}
+        {nursingAction === "tindakanKeperawatan" && (
+          <div className="cppt-form__label" style={{ marginTop: "10px" }}>
+            <input
+              className="cppt-form__input"
+              type="text"
+              value={nursingActionDetails}
+              onChange={updateActionDetails}
+              placeholder="Sebutkan tindakan keperawatan?"
+            />
+          </div>
+        )}
+
+        {/* Tampilkan input jika "lainLain" dipilih */}
         {nursingAction === "lainLain" && (
           <div className="cppt-form__label">
             <input
@@ -1897,7 +1945,6 @@ const Ass = () => {
             />
           </div>
         )}
-
 
         <h4>Skrining Risiko Jatuh</h4>
 
@@ -2968,7 +3015,47 @@ const Ass = () => {
           )}
         </div>
 
+        {/* Bagian simbol ✔️ untuk setiap tindakan */}
         <div style={{ marginTop: "20px", position: "relative" }}>
+          {nursingAction === "diagnosaManagementPenyakit" && (
+            <div
+              style={{
+                position: "absolute",
+                left: actionPositions.diagnosaManagementPenyakit.left,
+                top: actionPositions.diagnosaManagementPenyakit.top,
+                fontWeight: "bold",
+                fontSize: "16px",
+              }}
+            >
+              ✔️
+            </div>
+          )}
+          {nursingAction === "terapi" && (
+            <div
+              style={{
+                position: "absolute",
+                left: actionPositions.terapi.left,
+                top: actionPositions.terapi.top,
+                fontWeight: "bold",
+                fontSize: "16px",
+              }}
+            >
+              ✔️
+            </div>
+          )}
+          {nursingAction === "dietNutrisi" && (
+            <div
+              style={{
+                position: "absolute",
+                left: actionPositions.dietNutrisi.left,
+                top: actionPositions.dietNutrisi.top,
+                fontWeight: "bold",
+                fontSize: "16px",
+              }}
+            >
+              ✔️
+            </div>
+          )}
           {nursingAction === "rehabilitasi" && (
             <div
               style={{
@@ -2995,6 +3082,34 @@ const Ass = () => {
               ✔️
             </div>
           )}
+          {nursingAction === "tindakanKeperawatan" && nursingActionDetails && (
+            <>
+              {/* Simbol ✔️ */}
+              <div
+                style={{
+                  position: "absolute",
+                  left: actionPositions.tindakanKeperawatan.symbol.left, // Posisi simbol
+                  top: actionPositions.tindakanKeperawatan.symbol.top,  // Posisi simbol
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                }}
+              >
+                ✔️
+              </div>
+              {/* Teks nursingActionDetails */}
+              <div
+                style={{
+                  position: "absolute",
+                  left: actionPositions.tindakanKeperawatan.text.left, // Posisi teks
+                  top: actionPositions.tindakanKeperawatan.text.top,   // Posisi teks
+                  fontSize: "14px",
+                  fontStyle: "italic",
+                }}
+              >
+                {nursingActionDetails}
+              </div>
+            </>
+          )}
           {nursingAction === "lainLain" && nursingActionDetails && (
             <div
               style={{
@@ -3010,25 +3125,26 @@ const Ass = () => {
         </div>
 
 
+
         <div className="form-result" style={{ position: 'relative', width: '400px', height: '200px' }}>
           {/* Risiko Jatuh Mengatur letak Detail Hasil */}
           <p style={{ position: 'absolute' }}></p>
           <ul style={{ position: 'relative', listStyleType: 'none', padding: 0 }}>
-            <li style={{ position: 'absolute', left: '594px', top: '-1780px' }}>{result1}</li>
-            <li style={{ position: 'absolute', left: '594px', top: '-1728px' }}>{result2}</li>
+            <li style={{ position: 'absolute', left: '602px', top: '-1814px' }}>{result1}</li>
+            <li style={{ position: 'absolute', left: '602px', top: '-1762px' }}>{result2}</li>
           </ul>
           {/* Menambahkan Total Skor dengan pengaturan posisi */}
-          <p style={{ position: 'absolute', left: '594px', top: '-1658px' }}>{totalScore}</p>
+          <p style={{ position: 'absolute', left: '602px', top: '-1690px' }}>{totalScore}</p>
 
           {/* Menambahkan Status Risiko dengan pengaturan posisi */}
-          <p style={{ position: 'absolute', left: '594px', top: '-1618px' }}>{riskLevel}</p>
+          <p style={{ position: 'absolute', left: '594px', top: '-1658px' }}>{riskLevel}</p>
         </div>
 
         {/* Skrining gizi */}
         <div className="result-container" style={{ position: 'absolute', left: '300px', top: '600px' }}>
-          <h4 style={{ position: 'absolute', left: '280px', top: '1250px' }}>{weightLossScore}</h4>
-          <h4 style={{ position: 'absolute', left: '280px', top: '1350px' }}>{appetiteScore}</h4>
-          <h4 style={{ position: 'absolute', left: '280px', top: '1438px' }}>{totalNutritionScore}</h4>
+          <h4 style={{ position: 'absolute', left: '288px', top: '1290px' }}>{weightLossScore}</h4>
+          <h4 style={{ position: 'absolute', left: '288px', top: '1390px' }}>{appetiteScore}</h4>
+          <h4 style={{ position: 'absolute', left: '288px', top: '1478px' }}>{totalNutritionScore}</h4>
         </div>
 
         {/* Tampilkan hasil */}
@@ -3051,11 +3167,11 @@ const Ass = () => {
 
         {/* Gizi Anak */}
         <div className="result-container" style={{ position: 'absolute', left: '300px', top: '600px' }}>
-          <h4 style={{ position: 'absolute', left: '280px', top: '1644px' }}>{diseaseRiskScore}</h4>
-          <h4 style={{ position: 'absolute', left: '280px', top: '1690px' }}>{malnutritionStatusScore}</h4>
-          <h4 style={{ position: 'absolute', left: '280px', top: '1760px' }}>{nutritionConditionsScore}</h4>
-          <h4 style={{ position: 'absolute', left: '280px', top: '1840px' }}>{weightChangeScore}</h4>
-          <h4 style={{ position: 'absolute', left: '280px', top: '1926px' }}>{totalChildNutritionScore}</h4>
+          <h4 style={{ position: 'absolute', left: '288px', top: '1684px' }}>{diseaseRiskScore}</h4>
+          <h4 style={{ position: 'absolute', left: '288px', top: '1730px' }}>{malnutritionStatusScore}</h4>
+          <h4 style={{ position: 'absolute', left: '288px', top: '1800px' }}>{nutritionConditionsScore}</h4>
+          <h4 style={{ position: 'absolute', left: '288px', top: '1880px' }}>{weightChangeScore}</h4>
+          <h4 style={{ position: 'absolute', left: '288px', top: '1966px' }}>{totalChildNutritionScore}</h4>
         </div>
 
         <div style={{ marginTop: "20px", position: "relative" }}>
@@ -3080,15 +3196,15 @@ const Ass = () => {
 
           {!isPain ? (
             // Tidak...Jika tidak ada nyeri
-            <p style={{ position: 'absolute', top: '1420px', left: '150px' }}><strong>✔️</strong></p>
+            <p style={{ position: 'absolute', top: '1454px', left: '150px' }}><strong>✔️</strong></p>
           ) : (
             // Ya...Jika ada nyeri
             <>
-              <p style={{ position: 'absolute', top: '1600px', left: '262px' }}><strong></strong> {painScale}</p>
-              <p style={{ position: 'absolute', top: '1600px', left: '282px' }}><strong></strong> {painCategory}</p>
-              <p style={{ position: 'absolute', top: '1580px', left: '262px' }}><strong></strong> {painLocation || 'Belum diisi'}</p>
-              <p style={{ position: 'absolute', top: '1580px', left: '412px' }}><strong></strong> {painFrequency || 'Belum diisi'}</p>
-              <p style={{ position: 'absolute', top: '1580px', left: '536px' }}><strong></strong> {painDuration || 'Belum diisi'}</p>
+              <p style={{ position: 'absolute', fontSize: '14px', top: '1636px', left: '262px' }}><strong></strong> {painScale}</p>
+              <p style={{ position: 'absolute', fontSize: '14px', top: '1636px', left: '282px' }}><strong></strong> {painCategory}</p>
+              <p style={{ position: 'absolute', fontSize: '14px', top: '1610px', left: '262px' }}><strong></strong> {painLocation || 'Belum diisi'}</p>
+              <p style={{ position: 'absolute', fontSize: '14px', top: '1610px', left: '416px' }}><strong></strong> {painFrequency || 'Belum diisi'}</p>
+              <p style={{ position: 'absolute', fontSize: '14px', top: '1610px', left: '540px' }}><strong></strong> {painDuration || 'Belum diisi'}</p>
             </>
           )}
         </div>
@@ -3217,6 +3333,13 @@ const Ass = () => {
         </div>
       </div>
       <button onClick={handleDownload} className="ass-download-button">Download</button>
+      <div
+            className="back-to-home"
+            onClick={() => navigate("/")}
+            title="Kembali ke Beranda"
+        >
+            🏠 {/* Anda dapat mengganti dengan ikon sesuai kebutuhan */}
+        </div>
 
     </div >
   );

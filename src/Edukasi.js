@@ -4,9 +4,11 @@ import { toPng } from 'html-to-image';
 import download from 'downloadjs';
 import moment from 'moment-timezone';
 import EduImage from './images/dokumen3.png';
+import { useNavigate } from "react-router-dom";
 import './Edukasi.css';
 
 const Edukasi = () => {
+    const navigate = useNavigate();
     const [patientName, setPatientName] = useState('');
     const [ageGender, setAgeGender] = useState('');
     const [address1, setAddress1] = useState('');
@@ -14,27 +16,40 @@ const Edukasi = () => {
     const [address2, setAddress2] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [selectedDate, setSelectedDate] = useState(moment().tz('Asia/Jakarta').format('YYYY-MM-DDTHH:mm'));
-    const [patientRepSignature, setPatientRepSignature] = useState(null);
-    const [medicalSignature, setMedicalSignature] = useState(null);
+    const [uploadedMedicalSignature, setUploadedMedicalSignature] = useState(null); // For medical personnel signature
+    const [patientRepSignature, setPatientRepSignature] = useState(null); // Canvas signature data URL
+    const [medicalSignaturePosition, setMedicalSignaturePosition] = useState({ left: '530px', top: '1020px' });
+
+    const patientRepSigCanvasRef = useRef(); // Ref for canvas signature
+    const certRef = useRef();
+
+    const handleClearCanvas = () => {
+        patientRepSigCanvasRef.current.clear();
+        setPatientRepSignature(null);
+    };
+
+    const handleSaveCanvasSignature = () => {
+        const signatureDataUrl = patientRepSigCanvasRef.current.toDataURL();
+        setPatientRepSignature(signatureDataUrl);
+    };
+
+    const handleMedicalSignatureUpload = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setUploadedMedicalSignature(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     const [nomorRM, setNomorRM] = useState('');
     const [namaMedis, setNamaMedis] = useState('');
-    const certRef = useRef();
-    const patientRepSigCanvasRef = useRef();
-    const medicalSigCanvasRef = useRef();
 
     useEffect(() => {
         setSelectedDate(moment().tz('Asia/Jakarta').format('YYYY-MM-DDTHH:mm'));
     }, []);
-
-    const handleClearSignature = (ref, setSignature) => {
-        ref.current.clear();
-        setSignature(null);
-    };
-
-    const handleSendSignature = (ref, setSignature) => {
-        const signatureDataUrl = ref.current.toDataURL();
-        setSignature(signatureDataUrl);
-    };
 
     const handleDownload = () => {
         toPng(certRef.current, { width: 1420, height: 1260 })
@@ -49,15 +64,10 @@ const Edukasi = () => {
     return (
         <div>
             <div className="S-Unix2024 input-fields">
-            <h3 className="centered-heading">Form - Edukasi -</h3>
-                {/* New form fields */}
+                <h3 className="centered-heading">Form - Edukasi -</h3>
                 <label>
                     Nomor RM:
                     <input type="text" value={nomorRM} onChange={e => setNomorRM(e.target.value)} />
-                </label>
-                <label>
-                    Nama Medis:
-                    <input type="text" value={namaMedis} onChange={e => setNamaMedis(e.target.value)} />
                 </label>
                 <label>
                     Nama Pasien:
@@ -68,7 +78,7 @@ const Edukasi = () => {
                     <input type="text" value={ageGender} onChange={e => setAgeGender(e.target.value)} />
                 </label>
                 <label>
-                    Alamat1:
+                    Alamat Pasien:
                     <input type="text" value={address1} onChange={e => setAddress1(e.target.value)} />
                 </label>
                 <label>
@@ -84,28 +94,40 @@ const Edukasi = () => {
                     <input type="text" value={signatureName} onChange={e => setSignatureName(e.target.value)} />
                 </label>
                 <label>
-                    Alamat 2:
+                    Alamat :
                     <input type="text" value={address2} onChange={e => setAddress2(e.target.value)} />
                 </label>
                 <label>
                     No Telp:
                     <input type="text" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} />
                 </label>
-            </div>
 
-            {/* Signature Canvas for Patient's Representative */}
-            <div className="signature-container">
-                <h4>Signature for Patient’s Representative</h4>
-                <SignatureCanvas ref={patientRepSigCanvasRef} penColor="black" canvasProps={{ width: 400, height: 150, className: 'sigCanvas' }} />
-                <button onClick={() => handleClearSignature(patientRepSigCanvasRef, setPatientRepSignature)}>Clear</button>
-                <button onClick={() => handleSendSignature(patientRepSigCanvasRef, setPatientRepSignature)}>Send e-Sign</button>
-            </div>
+                <label>
+                    Nama Medis:
+                    <input type="text" value={namaMedis} onChange={e => setNamaMedis(e.target.value)} />
+                </label>
 
-            <div className="signature-container">
-                <h4>Signature for Medical Personnel</h4>
-                <SignatureCanvas ref={medicalSigCanvasRef} penColor="black" canvasProps={{ width: 400, height: 150, className: 'sigCanvas' }} />
-                <button onClick={() => handleClearSignature(medicalSigCanvasRef, setMedicalSignature)}>Clear</button>
-                <button onClick={() => handleSendSignature(medicalSigCanvasRef, setMedicalSignature)}>Send e-Sign</button>
+                {/* Upload Signature for Medical Personnel */}
+                <label>
+                    Upload Tanda Tangan Tenaga Medis:
+                    <input type="file" accept="image/*" onChange={handleMedicalSignatureUpload} />
+                </label>
+
+                {/* Canvas for Patient's Representative */}
+                <div className="signature-container">
+                    <h4>Tanda Tangan Perwakilan Pasien / Pasien:</h4>
+                    <SignatureCanvas
+                        ref={patientRepSigCanvasRef}
+                        penColor="black"
+                        canvasProps={{
+                            width: 400,
+                            height: 150,
+                            className: 'sigCanvas'
+                        }}
+                    />
+                    <button onClick={handleClearCanvas}>Clear</button>
+                    <button onClick={handleSaveCanvasSignature}>Simpan Tanda Tangan</button>
+                </div>
             </div>
 
             {/* Certificate Display */}
@@ -120,7 +142,7 @@ const Edukasi = () => {
                 <div className="S-Unix2024 overlay-text age-gender" style={{ left: '135px', top: '128px' }}>
                     {ageGender}
                 </div>
-                <div className="S-Unix2024 overlay-text address1" style={{ left: '140px', top: '153px' }}>
+                <div className="S-Unix2024 overlay-text address1" style={{ left: '138px', top: '153px' }}>
                     {address1}
                 </div>
                 <div className="S-Unix2024 overlay-text current-time" style={{ left: '-40px', top: '40px' }}>
@@ -135,27 +157,30 @@ const Edukasi = () => {
                 <div className="S-Unix2024 overlay-text phone-number" style={{ left: '192px', top: '372px' }}>
                     {phoneNumber}
                 </div>
-                {/* Display Patient Representative Signature */}
+
+                {/* Display Canvas Signature */}
                 {patientRepSignature && (
-                    <div className="S-Unix2024 overlay-text signature-display" style={{ left: '250px', top: '1100px' }}>
-                        <img src={patientRepSignature} alt="Patient Representative Signature" style={{ maxWidth: '70%', maxHeight: '70%' }} />
-                    </div>
-                )}
-                {patientRepSignature && signatureName && (
-                    <div className="S-Unix2024 overlay-text" style={{ left: '120px', top: '1100px', textAlign: 'center' }}>
-                        {signatureName}
+                    <div>
+                        <div className="S-Unix2024 overlay-text signature-display" style={{ left: '250px', top: '1100px' }}>
+                            <img src={patientRepSignature} alt="Patient Representative Signature" style={{ maxWidth: '70%', maxHeight: '70%' }} />
+                        </div>
+                        {/* Text under Patient Representative Signature */}
+                        <div className="S-Unix2024 overlay-text signature-name-text" style={{ left: '110px', top: '1110px' }}>
+                            {signatureName || "Nama Perwakilan Pasien"}
+                        </div>
                     </div>
                 )}
 
                 {/* Display Medical Personnel Signature */}
-                {medicalSignature && (
-                    <div className="S-Unix2024 overlay-text signature-display" style={{ left: '650px', top: '1100px' }}>
-                        <img src={medicalSignature} alt="Medical Personnel Signature" style={{ maxWidth: '70%', maxHeight: '70%' }} />
-                    </div>
-                )}
-                {medicalSignature && namaMedis && (
-                    <div className="S-Unix2024 overlay-text" style={{ left: '530px', top: '1100px', textAlign: 'center' }}>
-                        {namaMedis}
+                {uploadedMedicalSignature && (
+                    <div>
+                        <div className="S-Unix2024 overlay-text medical-signature" style={medicalSignaturePosition}>
+                            <img src={uploadedMedicalSignature} alt="Medical Personnel Signature" style={{ maxWidth: '70%', maxHeight: '70%' }} />
+                        </div>
+                        {/* Text under Medical Personnel Signature */}
+                        <div className="S-Unix2024 overlay-text medical-name-text" style={{ left: medicalSignaturePosition.left, top: `calc(${medicalSignaturePosition.top} + 90px)` }}>
+                            {namaMedis || "Nama Medis"}
+                        </div>
                     </div>
                 )}
 
@@ -165,6 +190,13 @@ const Edukasi = () => {
             <div className="S-Unix2024 download-button-container">
                 <button className="S-Unix2024 download-button" onClick={handleDownload}>Download Dokumen</button>
             </div>
+            <div
+            className="back-to-home"
+            onClick={() => navigate("/")}
+            title="Kembali ke Beranda"
+        >
+            🏠 {/* Anda dapat mengganti dengan ikon sesuai kebutuhan */}
+        </div>
         </div>
     );
 };
