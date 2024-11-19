@@ -34,3 +34,19 @@
     margin-bottom: -160px;
   }
   
+  /* src/Home.css */
+.centered-text {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 10px;
+  color: #333;
+}
+
+/* Untuk memusatkan secara horizontal dan vertikal */
+.docu-klinik-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Sesuaikan dengan tinggi layar */
+}

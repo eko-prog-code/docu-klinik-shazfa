@@ -8,7 +8,8 @@ const Home = () => {
 
     return (
         <div className="docu-klinik-container">
-            <h2>Docu Klinik</h2>
+            <h2>Docu Klinik Shazfa Mounira</h2>
+            <p className="centered-text">Halaman Home</p>
             <div className="icon-card-container">
                 <div className="icon-card">
                     <img
